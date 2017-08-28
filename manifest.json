@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Walt Extention",
+  "description": "Assisant personnel",
+  "version": "1.0",
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "notifications"
+  ],
+  "browser_action": {
+          "default_icon": {
+            "127": "img/walt_128.png"
+          },
+          "default_title": "Walt",
+          "default_popup": "index.html"
+        },
+  "icons": {
+    "128": "img/walt_128.png"
+  },
+  "background": {
+    "scripts": ["js/jquery-3.2.1.min.js", "js/app.js"]
+  }
+}
