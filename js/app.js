@@ -54,15 +54,13 @@ $( document ).ready(function() {
   function runRemindersTime(reminders) {
     setInterval(function() {
       reminders.forEach(function(reminder) {
-        // Pour chaque element reconstruction d'une date au format JS
-        var remtime = new Date(parseInt(reminder.jstime))
-        var time = new Date(Date.now());
+        var remtime = parseInt(reminder.jstime)
         // comparaison entre l'heure du reminder et l'heure actuelle
-        if (remtime.getHours() == time.getHours() && remtime.getMinutes() == time.getMinutes()) {
+        if (remtime > Date.now() && remtime < Date.now() + 8000) {
           // affiche une notification si c'est l'heure
           alert("Vous avez un message qui contient" + reminder.content)
         }
       });
-    }, 35 * 1000);
+    }, 5 * 1000);
   }
 });
