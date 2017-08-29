@@ -1,24 +1,26 @@
 $( document ).ready(function() {
-  // Appelle la fonction qui ce connecte à l'api en ajax
+  // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
     alert('Desktop notifications not available in your browser. Try Chromium.');
     return;
   }
-
+  // si les notif sont desactive, demande l'autorisation de les activées
   if (Notification.permission !== "granted")
     Notification.requestPermission();
 
-
+  // Appelle la fonction qui ce connecte à l'api en ajax
   backRequest();
 
 
   function backRequest(){
     $.ajax({
-      // pb unauthorized user wuand je ne suis pas connecter
-      "type": "GET",
-      "url": "http://localhost:3000/api/v1/reminders",
-      "X-User-Email": "david.messagerie@hotmail.fr",
-      "X-User-Token": "7MmXeMsK7UnWGQqLFvND",
+      // hender de connexion a l'api pour recevoir la liste des reminders
+      type: "GET",
+      url: "http://localhost:3000/api/v1/reminders",
+      headers: {
+        "X-User-Email": "david.messagerie@hotmail.fr",
+        "X-User-Token": "PxLs6XsLKtnPeB87xDWP"
+      },
       success: function(data) {
         // appelle la fonction qui traitera les datas
         handleReminders(data);
@@ -32,12 +34,13 @@ $( document ).ready(function() {
 
   function handleReminders(reminders) {
     var newReminders = []
+    // ajoute les reminders seulement si il ne sont pas encore passé
     reminders.forEach(function(reminder) {
       if (reminder.jstime > Date.now()) {
         newReminders.push(reminder)
       }
     });
-    // transforme le json en string
+    // transforme l'array de reminders (JSON) en string
     var stringify = JSON.stringify(newReminders);
     console.log(stringify);
     // appelle la fonction qui sauvegarde les données en local
@@ -47,7 +50,7 @@ $( document ).ready(function() {
 
 
   function storeReminder(reminder) {
-    // stocke chaque reminder en local storage
+    // stocke chaque reminder en local storage dans une "variable" appelé "remindplusiduser"
     localStorage.setItem("remindplusiduser", reminder);
     // recupere les données locales (json stingify)
     getStoredReminders();
@@ -56,6 +59,7 @@ $( document ).ready(function() {
   function getStoredReminders() {
     // recupere la stringify des reminders
     var remindString = localStorage.getItem("remindplusiduser");
+    // appelle la fonction pour reconstruire le local storage en JSON
     parseToJson(remindString);
   };
 
@@ -85,6 +89,7 @@ $( document ).ready(function() {
       var notification = new Notification('Walt Notification', {
         icon: '/img/walt_128.png',
         body: reminder.content,
+        sound: 'sound/walt.wav',
       });
 
       notification.onclick = function () {
