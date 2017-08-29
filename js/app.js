@@ -4,10 +4,11 @@ $( document ).ready(function() {
 
   function backRequest(){
     $.ajax({
-      type: "GET",
-      url: "http://localhost:3000/api/v1/reminders",
-      email: "david.messagerie@hotmail.fr",
-      authentication_token: "a6hYpzsfNJdYC6zEMxs3",
+      // pb unauthorized user wuand je ne suis pas connecter
+      "type": "GET",
+      "url": "http://localhost:3000/api/v1/reminders",
+      "X-User-Email": "david.messagerie@hotmail.fr",
+      "X-User-Token": "Mh1qx9PMN34QQ2LeyuK3",
       success: function(data) {
         // appelle la fonction qui traitera les datas
         handleReminders(data);
@@ -22,6 +23,7 @@ $( document ).ready(function() {
   function handleReminders(reminders) {
     // transforme le json en string
     var stringify = JSON.stringify(reminders);
+    console.log(stringify);
     // appelle la fonction qui sauvegarde les données en local
     storeReminder(stringify);
     reminders.forEach(function(reminder) {
@@ -32,7 +34,7 @@ $( document ).ready(function() {
 
   function storeReminder(reminder) {
     // stocke chaque reminder en local storage
-    sessionStorage.setItem("remindplusiduser", reminder);
+    localStorage.setItem("remindplusiduser", reminder);
     // recupere les données locales (json stingify)
     getStoredReminders();
     // Maintenant il faut retransformer la string en json et creer une fonction qui itaire dessus toutes les x seconde
@@ -42,18 +44,24 @@ $( document ).ready(function() {
 
   function getStoredReminders() {
     // recupere la stringify des reminders
-    return sessionStorage.getItem("remindplusiduser");
+    var remindString = localStorage.getItem("remindplusiduser");
+    parseToJson(remindString);
+  };
+
+  function parseToJson(string){
+    var remindJson = JSON.parse(string);
+    runRemindersTime(remindJson);
   };
 
 
   function runRemindersTime(reminders) {
     setInterval(function() {
-      // boucler sur chaque reminder
+      reminders.forEach(function(reminder) {
+        if (reminder.content === "test") {
+          // alert("Vous avez un message qui contient" + reminder.content)
+        }
+      });
       // affiche une notification si c'est l'heure
-    }, 60 * 1000);
+    }, 5 * 1000);
   }
 });
-
-
-
-
