@@ -8,7 +8,7 @@ $( document ).ready(function() {
       "type": "GET",
       "url": "http://localhost:3000/api/v1/reminders",
       "X-User-Email": "david.messagerie@hotmail.fr",
-      "X-User-Token": "Mh1qx9PMN34QQ2LeyuK3",
+      "X-User-Token": "7MmXeMsK7UnWGQqLFvND",
       success: function(data) {
         // appelle la fonction qui traitera les datas
         handleReminders(data);
@@ -57,11 +57,15 @@ $( document ).ready(function() {
   function runRemindersTime(reminders) {
     setInterval(function() {
       reminders.forEach(function(reminder) {
-        if (reminder.content === "test") {
-          // alert("Vous avez un message qui contient" + reminder.content)
+        // Pour chaque element reconstruction d'une date au format JS
+        var remtime = new Date(parseInt(reminder.jstime))
+        var time = new Date(Date.now());
+        // comparaison entre l'heure du reminder et l'heure actuelle
+        if (remtime.getHours() == time.getHours() && remtime.getMinutes() == time.getMinutes()) {
+          // affiche une notification si c'est l'heure
+          alert("Vous avez un message qui contient" + reminder.content)
         }
       });
-      // affiche une notification si c'est l'heure
-    }, 5 * 1000);
+    }, 35 * 1000);
   }
 });
