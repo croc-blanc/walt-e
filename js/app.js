@@ -31,14 +31,18 @@ $( document ).ready(function() {
 
 
   function handleReminders(reminders) {
+    var newReminders = []
+    reminders.forEach(function(reminder) {
+      if (reminder.jstime > Date.now()) {
+        newReminders.push(reminder)
+      }
+    });
     // transforme le json en string
-    var stringify = JSON.stringify(reminders);
+    var stringify = JSON.stringify(newReminders);
     console.log(stringify);
     // appelle la fonction qui sauvegarde les données en local
     storeReminder(stringify);
-    // reminders.forEach(function(reminder) {
-    //   // todo execute on each reminder
-    // });
+
   };
 
 
