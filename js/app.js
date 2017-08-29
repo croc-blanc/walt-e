@@ -1,6 +1,16 @@
 $( document ).ready(function() {
   // Appelle la fonction qui ce connecte à l'api en ajax
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.');
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+
+
   backRequest();
+
 
   function backRequest(){
     $.ajax({
@@ -26,9 +36,9 @@ $( document ).ready(function() {
     console.log(stringify);
     // appelle la fonction qui sauvegarde les données en local
     storeReminder(stringify);
-    reminders.forEach(function(reminder) {
-      // TODO execute on each reminder
-    });
+    // reminders.forEach(function(reminder) {
+    //   // todo execute on each reminder
+    // });
   };
 
 
@@ -58,9 +68,26 @@ $( document ).ready(function() {
         // comparaison entre l'heure du reminder et l'heure actuelle
         if (remtime > Date.now() && remtime < Date.now() + 8000) {
           // affiche une notification si c'est l'heure
-          alert("Vous avez un message qui contient" + reminder.content)
+          notifyMe(reminder)
         }
       });
     }, 5 * 1000);
+  }
+
+  function notifyMe(reminder) {
+    if (Notification.permission !== "granted")
+      Notification.requestPermission();
+    else {
+      var notification = new Notification('Walt Notification', {
+        icon: '/img/walt_128.png',
+        body: reminder.content,
+      });
+
+      notification.onclick = function () {
+        window.open("http://www.wall-app.fr");
+      };
+
+    }
+
   }
 });
