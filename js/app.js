@@ -37,9 +37,6 @@ $( document ).ready(function() {
     localStorage.setItem("remindplusiduser", reminder);
     // recupere les données locales (json stingify)
     getStoredReminders();
-    // Maintenant il faut retransformer la string en json et creer une fonction qui itaire dessus toutes les x seconde
-    // afin de vérifier si le time.now = reminder.time et reminder.date
-    // attention car la variable ce stoke dans seesion storage au lieu de local storage
   };
 
   function getStoredReminders() {
