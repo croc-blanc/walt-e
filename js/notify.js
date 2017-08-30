@@ -16,10 +16,10 @@ $( document ).ready(function() {
     $.ajax({
       // hender de connexion a l'api pour recevoir la liste des reminders
       type: "GET",
-      url: "http://localhost:3000/api/v1/reminders",
+      url: "https://walt-ia.herokuapp.com/api/v1/reminders",
       headers: {
-        "X-User-Email": "david.messagerie@hotmail.fr",
-        "X-User-Token": "PxLs6XsLKtnPeB87xDWP"
+        "X-User-Email": "va@gmail.com",
+        "X-User-Token": "nxfSiWuh7zwc9XvxX4k3"
       },
       success: function(data) {
         // appelle la fonction qui traitera les datas
@@ -74,7 +74,7 @@ $( document ).ready(function() {
       reminders.forEach(function(reminder) {
         var remtime = parseInt(reminder.jstime)
         // comparaison entre l'heure du reminder et l'heure actuelle
-        if (remtime > Date.now() && remtime < Date.now() + 8000) {
+        if (remtime > Date.now() && remtime < Date.now() + 15000) {
           // affiche une notification si c'est l'heure
           notifyMe(reminder)
         }
