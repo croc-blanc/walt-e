@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
   // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
-    alert('Desktop notifications not available in your browser. Try Chromium.');
+    alert('Les notifications ne sont pas disponible sur votre navigateur. Essayer Chromium.');
     return;
   }
   // si les notif sont desactive, demande l'autorisation de les activées
