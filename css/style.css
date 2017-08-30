@@ -163,3 +163,8 @@ body {
   background-color: #2F2F2F;
 }
 
+table {
+      width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
