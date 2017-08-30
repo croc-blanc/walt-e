@@ -86,9 +86,8 @@ $( document ).ready(function() {
         console.log(index);
         console.log(reminder);
         console.log("--------------------------");
-        var remtime = parseInt(reminder.jstime)
         // comparaison entre l'heure du reminder et l'heure actuelle
-        if (remtime <= Date.now()) {
+        if (Date.parse(reminder.time) <= Date.now() + 15000) {
           // affiche une notification si c'est l'heure
           console.log("notification");
           notifyMe(reminder);
@@ -110,7 +109,7 @@ $( document ).ready(function() {
 
       notification.onclick = function () {
         // si on clique sur la notif, on appelle la fonction snooze
-        snoozeNotif(reminder);
+        // snoozeNotif(reminder);
       };
 
     }
@@ -118,34 +117,34 @@ $( document ).ready(function() {
   }
 
 
-  function snoozeNotif(reminder) {
-    // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
-    var newTime = parseInt(reminder.jstime) + 30000; // snooze pour 30 sec
-    reminder.jstime = newTime;
-    reminder.id = null;
-    reminder.time = null;
-    var action = {
-      type: undefined,
-      when: undefined,
-      content: undefined
-    };
-    var hash = {
-      reminder: action
-    };
-    $.ajax({
-      type: "POST",
-      url: apiBaseUrl + "/reminders",
-      headers: ajaxHeaders,
-      data: reminder,
-      success: function(data) {
-        console.log("SNOOZE Success: " + data);
-        alert("La répétition dans 5 min à était activé");
-      },
-      error: function(jqXHR) {
-        console.error(jqXHR.responseText);
-        alert("Une erreur est survenue :" + jqXHR.responseText)
-      }
-    });
-  };
+  // function snoozeNotif(reminder) {
+  //   // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
+  //   var newTime = parseInt(reminder.jstime) + 30000; // snooze pour 30 sec
+  //   reminder.jstime = newTime;
+  //   reminder.id = null;
+  //   reminder.time = null;
+  //   var action = {
+  //     type: undefined,
+  //     when: undefined,
+  //     content: undefined
+  //   };
+  //   var hash = {
+  //     reminder: action
+  //   };
+  //   $.ajax({
+  //     type: "POST",
+  //     url: apiBaseUrl + "/reminders",
+  //     headers: ajaxHeaders,
+  //     data: reminder,
+  //     success: function(data) {
+  //       console.log("SNOOZE Success: " + data);
+  //       alert("La répétition dans 5 min à était activé");
+  //     },
+  //     error: function(jqXHR) {
+  //       console.error(jqXHR.responseText);
+  //       alert("Une erreur est survenue :" + jqXHR.responseText)
+  //     }
+  //   });
+  // };
 
 });
