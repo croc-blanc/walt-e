@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 
   function stepAction() {
-    $('#output').html(actionType);
+    $('#output').html(input.val());
 
     if (actionType == "reminder", "remind", "remindme") {
       input.attr("placeholder", "what do you want to remind to ?");
@@ -110,7 +110,7 @@ $(document).ready(function() {
 
 
   function stepDate() {
-    $('#date_output').val(input.val());
+    $('#date_output').html(input.val());
     action.when = input.val();
   }
 
