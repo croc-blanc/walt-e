@@ -118,10 +118,10 @@ $(document).ready(function() {
   function sendAction() {
     $.ajax({
       type: "POST",
-      url: "https://walt-ia.herokuapp.com/api/v1/reminders",
+      url: "http://localhost:3000/api/v1/reminders",
       hender: {
         "X-User-Email": "david.messagerie@hotmail.fr",
-        "X-User-Token": "knRowJPN8C5nzbWUrBHZ"
+        "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
       },
       data: hash,
       success: function(data) {
