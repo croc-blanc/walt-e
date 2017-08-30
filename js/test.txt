@@ -1,9 +1,0 @@
-// Pour chaque element reconstruction d'une date au format JS
-// var remtime = new Date(parseInt(reminder.jstime))
-// var time = new Date(Date.now());
-
-remtime.getHours() == time.getHours() &&
-    remtime.getMinutes() == time.getMinutes() &&
-    remtime.getYear() == time.getYear() &&
-    remtime.getMonth() == time.getMonth() &&
-    remtime.getDay() == time.getDay()

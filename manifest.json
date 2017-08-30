@@ -19,6 +19,8 @@
     "128": "img/walt_128.png"
   },
   "background": {
-    "scripts": ["js/jquery-3.2.1.min.js", "js/notify.js"]
+    "scripts": ["jquery.js", "js/app.js"]
   }
 }
+
+
