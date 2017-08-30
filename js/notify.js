@@ -1,10 +1,10 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
     "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
+    "X-User-Token": "knRowJPN8C5nzbWUrBHZ"
   };
 
-  var apiBaseUrl = "http://localhost:3000/api/v1";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
 
   // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
@@ -45,7 +45,7 @@ $( document ).ready(function() {
     var newReminders = []
     // ajoute les reminders seulement si il ne sont pas encore passé
     reminders.forEach(function(reminder) {
-      if (reminder.jstime > Date.now()) {
+      if (Date.parse(reminder.time) > Date.now()) {
         newReminders.push(reminder)
       }
     });
@@ -83,10 +83,14 @@ $( document ).ready(function() {
   function runRemindersTime(reminders) {
     setInterval(function() {
       reminders.forEach(function(reminder, index) {
+        console.log(index);
+        console.log(reminder);
+        console.log("--------------------------");
         var remtime = parseInt(reminder.jstime)
         // comparaison entre l'heure du reminder et l'heure actuelle
         if (remtime <= Date.now()) {
           // affiche une notification si c'est l'heure
+          console.log("notification");
           notifyMe(reminder);
           reminders.splice(index, 1);
         }
@@ -120,6 +124,14 @@ $( document ).ready(function() {
     reminder.jstime = newTime;
     reminder.id = null;
     reminder.time = null;
+    var action = {
+      type: undefined,
+      when: undefined,
+      content: undefined
+    };
+    var hash = {
+      reminder: action
+    };
     $.ajax({
       type: "POST",
       url: apiBaseUrl + "/reminders",
