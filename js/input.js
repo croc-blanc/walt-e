@@ -118,7 +118,7 @@ $(document).ready(function() {
   function sendAction() {
     $.ajax({
       type: "POST",
-      url: "http://192.168.2.11:3000/api/v1/reminders",
+      url: "http://localhost:3000/api/v1/reminders",
       data: hash,
       success: function(data) {
         console.log("POST Success: " + data);
@@ -136,4 +136,3 @@ $(document).ready(function() {
     input.attr("placeholder", "what do you want to remind to ?");
   }
 });
-

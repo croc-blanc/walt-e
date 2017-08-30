@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
     "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "PxLs6XsLKtnPeB87xDWP"
+    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
   };
 
   var apiBaseUrl = "http://localhost:3000/api/v1";
