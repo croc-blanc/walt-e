@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
     "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "PxLs6XsLKtnPeB87xDWP"
+    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
   };
 
   var apiBaseUrl = "http://localhost:3000/api/v1";
@@ -45,7 +45,7 @@ $( document ).ready(function() {
     var newReminders = []
     // ajoute les reminders seulement si il ne sont pas encore passé
     reminders.forEach(function(reminder) {
-      if (reminder.jstime > Date.now()) {
+      if (Date.parse(reminder.time) > Date.now()) {
         newReminders.push(reminder)
       }
     });
@@ -83,10 +83,13 @@ $( document ).ready(function() {
   function runRemindersTime(reminders) {
     setInterval(function() {
       reminders.forEach(function(reminder, index) {
-        var remtime = parseInt(reminder.jstime)
+        console.log(index);
+        console.log(reminder);
+        console.log("--------------------------");
         // comparaison entre l'heure du reminder et l'heure actuelle
-        if (remtime <= Date.now()) {
+        if (Date.parse(reminder.time) <= Date.now() + 15000) {
           // affiche une notification si c'est l'heure
+          console.log("notification");
           notifyMe(reminder);
           reminders.splice(index, 1);
         }
@@ -106,7 +109,7 @@ $( document ).ready(function() {
 
       notification.onclick = function () {
         // si on clique sur la notif, on appelle la fonction snooze
-        snoozeNotif(reminder);
+        // snoozeNotif(reminder);
       };
 
     }
@@ -114,26 +117,34 @@ $( document ).ready(function() {
   }
 
 
-  function snoozeNotif(reminder) {
-    // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
-    var newTime = parseInt(reminder.jstime) + 30000; // snooze pour 30 sec
-    reminder.jstime = newTime;
-    reminder.id = null;
-    reminder.time = null;
-    $.ajax({
-      type: "POST",
-      url: apiBaseUrl + "/reminders",
-      headers: ajaxHeaders,
-      data: reminder,
-      success: function(data) {
-        console.log("SNOOZE Success: " + data);
-        alert("La répétition dans 5 min à était activé");
-      },
-      error: function(jqXHR) {
-        console.error(jqXHR.responseText);
-        alert("Une erreur est survenue :" + jqXHR.responseText)
-      }
-    });
-  };
+  // function snoozeNotif(reminder) {
+  //   // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
+  //   var newTime = parseInt(reminder.jstime) + 30000; // snooze pour 30 sec
+  //   reminder.jstime = newTime;
+  //   reminder.id = null;
+  //   reminder.time = null;
+  //   var action = {
+  //     type: undefined,
+  //     when: undefined,
+  //     content: undefined
+  //   };
+  //   var hash = {
+  //     reminder: action
+  //   };
+  //   $.ajax({
+  //     type: "POST",
+  //     url: apiBaseUrl + "/reminders",
+  //     headers: ajaxHeaders,
+  //     data: reminder,
+  //     success: function(data) {
+  //       console.log("SNOOZE Success: " + data);
+  //       alert("La répétition dans 5 min à était activé");
+  //     },
+  //     error: function(jqXHR) {
+  //       console.error(jqXHR.responseText);
+  //       alert("Une erreur est survenue :" + jqXHR.responseText)
+  //     }
+  //   });
+  // };
 
 });

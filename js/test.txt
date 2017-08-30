@@ -9,4 +9,10 @@ remtime.getHours() == time.getHours() &&
     remtime.getDay() == time.getDay()
 
 
-    
+//////////avec la config /////////////
+si je lui dit dans 2 min j'ai 2h de moins -> pas recu
+si je lui dit a 16h02 j'ai 18h02 -> pas recu
+
+//////////sans la config//////////////
+si je lui dit dans 2 min il save a 2h de moins mais je recoi la notif
+si je lui dit a 16h11 il save 16h11 mais le temps js est de 18h11
