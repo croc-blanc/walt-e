@@ -1,10 +1,10 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
-    "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
+    "X-User-Email": "gregoire.d@gmail.com",
+    "X-User-Token": "PdFyyk-v1TNpJxiyDo1z"
   };
 
-  var apiBaseUrl = "http://localhost:3000/api/v1";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
 
   // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
