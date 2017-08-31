@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
-    "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "7gM3HFzUrKUzXppbt_4v"
+    "X-User-Email": "brunetnuma@gmail.com",
+    "X-User-Token": "rgJ6TJsyxvWL4zwuLc7F"
   };
 
   var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
