@@ -66,6 +66,7 @@ $(document).ready(function() {
         remind.show("slow");
       }
       input.attr("placeholder", "What       ?");
+
     }
   }
 
@@ -85,6 +86,7 @@ $(document).ready(function() {
 
     action.content = input.val();
     input.attr("placeholder", "When       ?");
+
   }
 
 
@@ -143,5 +145,6 @@ $(document).ready(function() {
 
     step = 1;
     input.attr("placeholder", "Action       ?");
+
   }
 });

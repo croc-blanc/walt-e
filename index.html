@@ -12,8 +12,6 @@
   <script src="js/input.js"></script>
   <script src="js/list.js"></script>
 
-
-
 </head>
 <body>
   <div class="ffn_layout" style="display: block;">
@@ -47,25 +45,27 @@
       </div>
 
       <!-- Dropdown appearing on mobile only -->
-      <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="navbar-wagon-item hidden-md hidden-lg" style="float: right">
         <div class="dropdown">
           <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Host</a></li>
-            <li><input type="checkbox" value="Pop-up" />SMS
+            <li><a href="#">Notifications</a></li>
+            <li><input type="checkbox" value="Pop-up" />Pop-Up
               <li><input type="checkbox" value="SMS" />SMS
               </ul>
             </div>
           </div>
         </div>
+
         <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+
         <table>
     <tr>
-        <td class="btn btn_remind" id='output'>
+        <td class="btn_remind" id='output'>
         </td>
-        <td class="btn btn_content" id='content_output'>
+        <td class="btn_content" id='content_output'>
         </td>
-        <td class="btn btn_date" id='date_output'>
+        <td class="btn_date" id='date_output'>
         </td>
     </tr>
 </table>
