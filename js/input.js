@@ -51,7 +51,7 @@ $(document).ready(function() {
     $('#output').html(input.val());
 
     if (actionType == "reminder", "remind", "remindme") {
-      input.attr("placeholder", "what do you want to remind to ?");
+      input.attr("placeholder", "What ?");
     }
   }
 
@@ -59,7 +59,7 @@ $(document).ready(function() {
   function stepMessage() {
     $('#content_output').html(input.val());
     action.content = input.val();
-    input.attr("placeholder", "When do you want to be reminded ?");
+    input.attr("placeholder", "When ?");
   }
 
 
@@ -101,6 +101,6 @@ $(document).ready(function() {
 
   function resetForm() {
     step = 1;
-    input.attr("placeholder", "what do you want to remind to ?");
+    input.attr("placeholder", "What ?");
   }
 });
