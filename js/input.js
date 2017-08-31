@@ -118,7 +118,7 @@ $(document).ready(function() {
   function sendAction() {
     $.ajax({
       type: "POST",
-      url: "https://walt-ia.herokuapp.com/api/v1/reminders",
+      url: "http://localhost:3000/api/v1/reminders",
        headers: {
         "X-User-Email": "va@gmail.com",
         "X-User-Token": "nxfSiWuh7zwc9XvxX4k3"

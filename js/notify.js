@@ -16,7 +16,7 @@ $( document ).ready(function() {
     $.ajax({
       // hender de connexion a l'api pour recevoir la liste des reminders
       type: "GET",
-      url: "https://walt-ia.herokuapp.com/api/v1/reminders",
+      url: "http://localhost:3000/api/v1/reminders",
       headers: {
         "X-User-Email": "va@gmail.com",
         "X-User-Token": "nxfSiWuh7zwc9XvxX4k3"
