@@ -11,11 +11,13 @@ $(document).ready(function() {
     reminder: action
   };
   var ajaxHeaders = {
+
     "X-User-Email": "gregoire.d@gmail.com",
     "X-User-Token": "PdFyyk-v1TNpJxiyDo1z"
   };
 
   var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
+
 
 
   input.on('keyup', function(event) {
