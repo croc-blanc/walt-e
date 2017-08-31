@@ -30,7 +30,9 @@ $( document ).ready(function() {
       success: function(data) {
         console.log(data);
       },
-      error: function(jqXHR) {
+      error: function(jqXHR, status, text) {
+        console.log(status);
+        console.log(text);
         console.error(jqXHR.responseText);
       }
     });
