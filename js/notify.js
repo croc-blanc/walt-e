@@ -1,15 +1,27 @@
 $( document ).ready(function() {
+  var ajaxHeaders = {
+    "X-User-Email": "david.messagerie@hotmail.fr",
+    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
+  };
+
+  var apiBaseUrl = "http://localhost:3000/api/v1";
+
   // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
-    alert('Desktop notifications not available in your browser. Try Chromium.');
+    alert('Les notifications ne sont pas disponible sur votre navigateur. Essayer Chromium.');
     return;
   }
   // si les notif sont desactive, demande l'autorisation de les activées
-  if (Notification.permission !== "granted")
+  if (Notification.permission !== "granted") {
     Notification.requestPermission();
+  }
 
-  // Appelle la fonction qui ce connecte à l'api en ajax
+  // Appelle la fonction qui ce connecte à l'api en ajax au chargement de la page puis toute les 2 min
   backRequest();
+  setInterval(function() {
+    backRequest();
+  }, 60 * 1000);
+
 
 
   function backRequest(){
@@ -36,7 +48,7 @@ $( document ).ready(function() {
     var newReminders = []
     // ajoute les reminders seulement si il ne sont pas encore passé
     reminders.forEach(function(reminder) {
-      if (reminder.jstime > Date.now()) {
+      if (Date.parse(reminder.time) > Date.now()) {
         newReminders.push(reminder)
       }
     });
@@ -64,28 +76,34 @@ $( document ).ready(function() {
   };
 
   function parseToJson(string){
+    // transforme la string du local storage en JSON
     var remindJson = JSON.parse(string);
+    // envoie le JSON a la fonction qui check l'heure actuelle et l'heure du reminder
     runRemindersTime(remindJson);
   };
 
 
   function runRemindersTime(reminders) {
     setInterval(function() {
-      reminders.forEach(function(reminder) {
-        var remtime = parseInt(reminder.jstime)
+      reminders.forEach(function(reminder, index) {
         // comparaison entre l'heure du reminder et l'heure actuelle
+<<<<<<< HEAD
         if (remtime > Date.now() && remtime < Date.now() + 15000) {
+=======
+        if (Date.parse(reminder.time) <= Date.now() + 15000) {
+>>>>>>> 47711b284d92356ba0baaec783233e5544b762ee
           // affiche une notification si c'est l'heure
-          notifyMe(reminder)
+          notifyMe(reminder);
+          reminders.splice(index, 1);
         }
       });
     }, 5 * 1000);
   }
-
+  // fonction de notification
   function notifyMe(reminder) {
-    if (Notification.permission !== "granted")
+    if (Notification.permission !== "granted") {
       Notification.requestPermission();
-    else {
+    } else {
       var notification = new Notification('Walt Notification', {
         icon: '/img/walt_128.png',
         body: reminder.content,
@@ -93,10 +111,43 @@ $( document ).ready(function() {
       });
 
       notification.onclick = function () {
-        window.open("http://www.wall-app.fr");
+        //si on clique sur la notif, on appelle la fonction snooze
+        snoozeNotif(reminder);
       };
 
     }
 
   }
+
+
+  function snoozeNotif(reminder) {
+    // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
+    var newTime = Date.parse(reminder.time) + 30000; // snooze pour 30 sec
+    reminder.jstime = newTime;
+    reminder.id = null;
+    reminder.time = null;
+    var action = {
+      type: "reminders",
+      when: newTime,
+      content: reminder.content
+    };
+    var hash = {
+      reminder: action
+    };
+    $.ajax({
+      type: "POST",
+      url: apiBaseUrl + "/reminders",
+      headers: ajaxHeaders,
+      data: reminder,
+      success: function(data) {
+        console.log("SNOOZE Success: " + data);
+        alert("La répétition dans 5 min à était activé");
+      },
+      error: function(jqXHR) {
+        console.error(jqXHR.responseText);
+        alert("Une erreur est survenue :" + jqXHR.responseText)
+      }
+    });
+  };
+
 });

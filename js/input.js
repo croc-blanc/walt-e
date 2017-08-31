@@ -1,42 +1,3 @@
-// $(document).ready(function(){
-//   var input = $("#txt_name").keyup(function(e) {
-//     if(e.which == 13) {
-//       if(input.val() == 'reminder') {
-//         $('#output').html(input.val());
-//         $(this).val("");
-//         $(this).attr("placeholder", "what do you want to remind to ?")
-//       }
-//     }
-//   });
-//         // if($('#output').val() == 'reminder') {
-//         // $('#content_output').html(input.val());
-//         // $(this).val("");
-
-//         var new_input = $("#txt_name").keyup(function(e) {
-//           if(e.which == 13) {
-//             $('#content_output').html(input.val());
-//             $(this).val("");
-
-
-
-//           }
-
-
-
-
-
-
-//         });
-//         var new_input = $("#txt_name").keyup(function(e) {
-//           if(e.which == 13) {
-
-//           });
-
-//   var input = $('#txt_name').val();
-//   $('#txt_name').val(input);
-// });
-
-
 $(document).ready(function() {
   var input = $("#txt_name");
   var step = 1;
@@ -49,6 +10,12 @@ $(document).ready(function() {
   var hash = {
     reminder: action
   };
+  var ajaxHeaders = {
+    "X-User-Email": "david.messagerie@hotmail.fr",
+    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
+  };
+
+  var apiBaseUrl = "http://localhost:3000/api/v1";
 
   input.on('keyup', function(event) {
     if (event.which != 13) {
@@ -81,7 +48,7 @@ $(document).ready(function() {
 
 
   function stepAction() {
-    $('#output').html(actionType);
+    $('#output').html(input.val());
 
     if (actionType == "reminder", "remind", "remindme") {
       input.attr("placeholder", "what do you want to remind to ?");
@@ -110,7 +77,7 @@ $(document).ready(function() {
 
 
   function stepDate() {
-    $('#date_output').val(input.val());
+    $('#date_output').html(input.val());
     action.when = input.val();
   }
 
@@ -118,11 +85,16 @@ $(document).ready(function() {
   function sendAction() {
     $.ajax({
       type: "POST",
+<<<<<<< HEAD
       url: "http://localhost:3000/api/v1/reminders",
        headers: {
         "X-User-Email": "va@gmail.com",
         "X-User-Token": "nxfSiWuh7zwc9XvxX4k3"
       },
+=======
+      url: apiBaseUrl + "/reminders",
+      headers: ajaxHeaders,
+>>>>>>> 47711b284d92356ba0baaec783233e5544b762ee
       data: hash,
       success: function(data) {
         console.log("POST Success: " + data);
@@ -140,4 +112,3 @@ $(document).ready(function() {
     input.attr("placeholder", "what do you want to remind to ?");
   }
 });
-
