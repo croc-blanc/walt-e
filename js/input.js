@@ -12,10 +12,10 @@ $(document).ready(function() {
   };
   var ajaxHeaders = {
     "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
+    "X-User-Token": "7gM3HFzUrKUzXppbt_4v"
   };
 
-  var apiBaseUrl = "http://localhost:3000/api/v1";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
 
   input.on('keyup', function(event) {
     if (event.which != 13) {
