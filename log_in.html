@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Login !</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/connect/log_in.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Login !</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/connect/log_in.js"></script>
+</head>
+<body>
+  <div class="ffn_layout" style="display: block;">
     <form novalidate="novalidate" class="simple_form new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="QP9z4Oxoka3kb/w6MDMmas5JfZ9OLs3eglUBicleKRU0+/1WV9H9VZ3oEDLZu7xNLAMZdldtkbW0Ir2xEX646w==" />
-  <div class="form-inputs">
-    <div class="form-group email optional user_email"><label class="control-label email optional" for="user_email">Email</label><input class="form-control string email optional" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" /></div>
-    <div class="form-group password optional user_password"><label class="control-label password optional" for="user_password">Password</label><input class="form-control password optional" type="password" name="user[password]" id="user_password" /></div>
-  </div>
+      <p id="form_error"class="alert alert-danger" style="display: none"></p>
 
-  <div class="form-actions">
-    <a href="" id="send" class="button btn-large"> Log in</a>
-  </div>
-</form>
+      <div class="form-inputs">
+        <div class="form-group email optional user_email"><label class="control-label email optional" for="user_email">Email</label><input class="form-control string email optional" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" /></div>
+        <div class="form-group password optional user_password"><label class="control-label password optional" for="user_password">Password</label><input class="form-control password optional" type="password" name="user[password]" id="user_password" /></div>
+      </div>
 
-  <a href="sign_up.html" id="send">Sign up</a><br />
-  </body>
+      <div class="form-actions">
+        <button type="submit" class="button btn-large"> Log in</button>
+      </div>
+    </form>
+
+    <a href="sign_up.html">Sign up</a><br />
+  </div>
+</body>
 </html>

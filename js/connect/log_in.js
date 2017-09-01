@@ -1,22 +1,19 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
     "accept": "application/json",
-    "Access-Control-Allow-Origin": "*",
-  //  "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  //  "Access-Control-Max-Age": 1000,
-    //"Access-Control-Allow-Headers": "origin, x-csrftoken, content-type, accept"
   };
 
   var apiBaseUrl = "http://localhost:3000";
 
-  $( "#send" ).click(function() {
+  $( "#new_user" ).on('submit', function(event) {
+    event.preventDefault();
+
     var email = $("#user_email").val();
     var password = $("#user_password").val();
-    console.log("in click");
+
+    // send at ajax and try to login
     ajaxLogin(email, password);
   });
-  // send at ajax and try to login
-
 
   function ajaxLogin(email, password) {
     var data = {
@@ -26,29 +23,30 @@ $( document ).ready(function() {
       }
     };
 
-    console.log('login Data', data);
     $.ajax({
       type: "POST",
       url: apiBaseUrl + "/users/sign_in",
       headers: ajaxHeaders,
-      data: { "user":
-                    {
-                      "email": "david.messagerie@hotmail.fr",
-                      "password": "031088"
-                    }
-            },
+      data: data,
       dataType: "json",
-    //  contentType : "application/json",
       success: function(data) {
-        console.log("success", data);
+        var user = {
+          email: data.email,
+          token: data.authentication_token
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        window.location.href = "./index.html";
       },
+
       error: function(jqXHR, status, text) {
-        console.log("error ajax", status);
-        console.log(text);
-        console.error(jqXHR);
+        if (jqXHR.responseJSON.error) {
+          $("#form_error")
+            .show()
+            .html(jqXHR.responseJSON.error);
+        }
       }
     });
   };
-
-
 });
