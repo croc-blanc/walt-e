@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
+  if (localStorage.getItem("user") != null){
+    var ajaxHeaders = {
+                        "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+                        "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+                      };
+    };
+  //
   var input = $("#txt_name");
   var step = 1;
   var actionType;
@@ -10,13 +18,8 @@ $(document).ready(function() {
   var hash = {
     reminder: action
   };
-  var ajaxHeaders = {
 
-    "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "7gM3HFzUrKUzXppbt_4v"
-  };
-
-  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
+  var apiBaseUrl = "http://127.0.0.1:3000/api/v1";
 
 
 

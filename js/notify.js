@@ -1,12 +1,20 @@
-$( document ).ready(function() {
-  var ajaxHeaders = {
+$(document).ready(function() {
+  // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
+  if (localStorage.getItem("user") != null){
+    var ajaxHeaders = {
+                        "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+                        "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+                      };
+      // Appelle la fonction qui ce connecte à l'api en ajax au chargement de la page puis toute les 2 min
+      backRequest();
+      setInterval(function() {
+        backRequest();
+      }, 60 * 1000);
+    };
 
-    "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "7gM3HFzUrKUzXppbt_4v"
 
-  };
 
-  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
+  var apiBaseUrl = "http://127.0.0.1:3000/api/v1";
 
   // check si les notifs sont disponible sur le navigateur
   if (!Notification) {
@@ -17,12 +25,6 @@ $( document ).ready(function() {
   if (Notification.permission !== "granted") {
     Notification.requestPermission();
   }
-
-  // Appelle la fonction qui ce connecte à l'api en ajax au chargement de la page puis toute les 2 min
-  backRequest();
-  setInterval(function() {
-    backRequest();
-  }, 60 * 1000);
 
 
 

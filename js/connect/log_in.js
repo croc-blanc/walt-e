@@ -33,9 +33,12 @@ $( document ).ready(function() {
       dataType: "json",
       success: function(data) {
         // en cas de success
+        console.log(data);
         var user = {
           email: data.email,
-          token: data.authentication_token
+          token: data.authentication_token,
+          phone_number: data.phone_number,
+          first_name: data.first_name
         };
         // on sauvegarde en local l'email et le token d'authentification
         localStorage.setItem("user", JSON.stringify(user));
