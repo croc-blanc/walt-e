@@ -1,8 +1,8 @@
 $( document ).ready(function() {
   var ajaxHeaders = {
 
-    "X-User-Email": "gregoire.d@gmail.com",
-    "X-User-Token": "PdFyyk-v1TNpJxiyDo1z"
+    "X-User-Email": "david.messagerie@hotmail.fr",
+    "X-User-Token": "7gM3HFzUrKUzXppbt_4v"
 
   };
 
