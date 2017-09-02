@@ -49,7 +49,8 @@ $( document ).ready(function() {
       error: function(jqXHR, status, text) {
         if (jqXHR.responseJSON.error) {
           // en cas d'ereur on affiche une notif contenant le message d'erreur
-          $("#form_error")
+          // ne fonctionne pas ici
+          $("#form_error_new_user")
             .show()
             .html(jqXHR.responseJSON.error);
         }
