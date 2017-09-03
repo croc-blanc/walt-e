@@ -135,7 +135,7 @@ $(document).ready(function() {
       type: "POST",
       url: apiBaseUrl + "/reminders",
       headers: ajaxHeaders,
-      data: reminder,
+      data: hash,
       success: function(data) {
         console.log("SNOOZE Success: " + data);
         alert("La répétition dans 5 min à était activé");
@@ -143,6 +143,7 @@ $(document).ready(function() {
       error: function(jqXHR) {
         console.error(jqXHR.responseText);
         alert("Une erreur est survenue :" + jqXHR.responseText)
+        console.dir(hash);
       }
     });
   };
