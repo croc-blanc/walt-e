@@ -90,16 +90,19 @@ $(document).ready(function() {
 
     function runRemindersTime(reminders) {
       if (remindersIntervalId) {
+        console.log('clearInterval', remindersIntervalId);
         clearTimeout(remindersIntervalId);
       };
 
       remindersIntervalId = setInterval(function() {
+            console.log('setInterval', remindersIntervalId);
             reminders.forEach(function(reminder, index) {
                 // comparaison entre l'heure du reminder et l'heure actuelle
                 if (Date.parse(reminder.time) <= Date.now() + 9000) {
                     // affiche une notification si c'est l'heure
                     notifyMe(reminder);
                     reminders.splice(index, 1);
+                    console.log("Remaining reminders :", reminders);
                 }
             });
         }, 5 * 1000);
