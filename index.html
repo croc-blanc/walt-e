@@ -58,20 +58,40 @@
             </div>
           </div>
         </div>
-        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+        <input class="form" type="text" id="txt_name" placeholder="Action ?" style="background-color: #2F2F2F">
+        <div class="btn_done" id='done'> Walt will remind you to do it ! </div>
         <table>
-    <tr>
-        <td class="btn_remind" id='output'>
-        </td>
-        <td class="btn_content" id='content_output'>
-        </td>
-        <td class="btn_date" id='date_output'>
-        </td>
-    </tr>
-</table>
-<div id="list">
+          <tr>
+            <td class="btn_remind" id='output'>
+            </td>
+            <td class="btn_content" id='content_output'>
+            </td>
+            <td class="btn_date" id='date_output'>
+            </td>
+          </tr>
+        </table>
+        <div id="list">
 
-</div>
+        </div>
+        <!-- in dropdown (settings form) ! -->
+         <div class="row">
+    <div class="col-xs-12">
+    <form>
+  <input class="form" type="text" id="phone_number" placeholder="06..." style="background-color: #2F2F2F">
+      <hr> Vertical checkbox:
+      <br>
+      <div class="btn-group btn-group-vertical" data-toggle="buttons">
+        <label class="btn active">
+          <input type="checkbox" name='sms' checked><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i> <span> SMS</span>
+        </label>
+        <label class="btn">
+          <input type="checkbox" name='pop'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Pop Up</span>
+        </label>
+      </div>
+      <button class="btn_submit">submit</button>
+</form>
+    </div>
+  </div>
 
-    </body>
-    </html>
+      </body>
+      </html>
