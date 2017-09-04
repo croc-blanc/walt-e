@@ -35,8 +35,13 @@ $(document).ready(function(){
 // create div and display reminder content and date for each reminder
   function showRemindersValue(reminders) {
     console.log("showRemindersValue " + reminders);
+    var i = 100;
     reminders.forEach(function(reminder) {
-      $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text(reminder.content + '   ' + reminder.date);
+      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content + ' ' + reminder.date).hide();
+      setTimeout(function() {
+        r.fadeIn(500)
+      }, i += 300);
+
     });
   };
 });
