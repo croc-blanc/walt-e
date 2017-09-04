@@ -72,20 +72,18 @@ $(document).ready(function() {
     // here I display the conten input in html(class="content_output") with some cool effect (show),
     // also i attribute the value to the variable action to send it in ajax
     // also change placeholder
-
+    action.content = input.val();
+    input.attr("placeholder", "When ?");
 
     // debugger;
-    if (input.val().length > 10) {
-    var messageText = input.val().slice(0, 10); 
+    if (input.val().length > 10) { 
+    var messageTextSliced = input.val().slice(0, 10);
     } else {
     var messageText = input.val()
   }
     var message = $('#content_output').html(messageText);
     message.hide();
     message.fadeIn();
-
-    action.content = messageText;
-    input.attr("placeholder", "When ?");
   }
 
 
@@ -160,13 +158,17 @@ $(document).ready(function() {
     input.attr("placeholder", "Action ?");
   };
 
-    function handleSettings {
-      var newSettings = []
-        newSettings.push(submit.val())
-      var settingsStringify = JSON.stringify(newSettings);
-      console.log(settingsStringify);
-      // appelle la fonction qui sauvegarde les données en local
-      storeReminder(settingsStringify);
+  ($'button').click(function() {
+    handleSettings();
+  }
+
+  function handleSettings() {
+    var newSettings = [];
+      newSettings.push(submit.val());
+    var settingsStringify = JSON.stringify(newSettings);
+    console.log(settingsStringify);
+    // appelle la fonction qui sauvegarde les données en local
+    storeSettings(settingsStringify);
 
   };
 
@@ -189,4 +191,3 @@ $(document).ready(function() {
 };
 
 
-});
