@@ -1,7 +1,16 @@
 $(document).ready(function() {
+  // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
+  if (localStorage.getItem("user") != null){
+    var ajaxHeaders = {
+                        "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+                        "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+                      };
+    };
+  //
   var input = $("#txt_name");
   var step = 1;
   var actionType;
+  var validated = $('#done').hide()
   var action = {
     type: undefined,
     when: undefined,
@@ -10,16 +19,15 @@ $(document).ready(function() {
   var hash = {
     reminder: action
   };
-  var ajaxHeaders = {
-    "X-User-Email": "david.messagerie@hotmail.fr",
-    "X-User-Token": "EC7PCx-eKZFMtBGBuWS7"
-  };
 
-  var apiBaseUrl = "http://localhost:3000/api/v1";
+  // var apiBaseUrl = "http://127.0.0.1:3000";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com";
+
 
   input.on('keyup', function(event) {
     if (event.which != 13) {
       return;
+      // here the key up function (enter on keyboard) "declenche" some actions (step 1, then 2, then 3)
     }
 
     console.log("Step : " + step);
@@ -48,22 +56,51 @@ $(document).ready(function() {
 
 
   function stepAction() {
-    $('#output').html(input.val());
+
+    // here I display the when input in html(class="date_output") with some cool effect (show)
+    // if the input match with actionType
+    // also i attribute the value to the variable action to send it in ajax
+    // also change placeholder
 
     if (actionType == "reminder", "remind", "remindme") {
-      input.attr("placeholder", "what do you want to remind to ?");
+      var remind = $('#output').html(input.val());
+      remind.hide();
+
+      remind.fadeIn();
+      input.attr("placeholder", "What ?");
+
     }
   }
 
 
   function stepMessage() {
-    $('#content_output').html(input.val());
-    action.content = input.val();
-    input.attr("placeholder", "When do you want to be reminded ?");
+
+    // here I display the conten input in html(class="content_output") with some cool effect (show),
+    // also i attribute the value to the variable action to send it in ajax
+    // also change placeholder
+
+
+    // debugger;
+    if (input.val().length > 10) {
+    var messageText = input.val().slice(0, 10);
+    } else {
+    var messageText = input.val()
+  }
+    var message = $('#content_output').html(messageText);
+    message.hide();
+    message.fadeIn();
+
+
+    action.content = messageText;
+    input.attr("placeholder", "When ?");
+
+
+
   }
 
 
   function extractActionType() {
+    // check if the input is correct and assign that value to action.type (to save it in rails)
     var value = input.val();
     var validActions = ["reminder", "remind", "rappelle"];
 
@@ -77,29 +114,37 @@ $(document).ready(function() {
 
 
   function stepDate() {
-    $('#date_output').html(input.val());
+
+    // here I display the when input in html(class="date_output") with some cool effect (show),
+    // also i attribute the value to the variable action to send it in ajax
+    var date_display = $('#date_output').html(input.val());
+    $('#date_output').hide();
+
+      $('#date_output').fadeIn();
+
+
+
+  //   if (date_display.is( ":hidden" )) {
+
+  //     date_display.show("slow");
+  //   }
     action.when = input.val();
   }
 
 
   function sendAction() {
+
+    // send to rails informations about one reminder to save it and get feedback about the when action
     $.ajax({
       type: "POST",
-<<<<<<< HEAD
-      url: "http://localhost:3000/api/v1/reminders",
-       headers: {
-        "X-User-Email": "va@gmail.com",
-        "X-User-Token": "nxfSiWuh7zwc9XvxX4k3"
-      },
-=======
-      url: apiBaseUrl + "/reminders",
+      url: apiBaseUrl + "/api/v1/reminders",
       headers: ajaxHeaders,
->>>>>>> 47711b284d92356ba0baaec783233e5544b762ee
       data: hash,
       success: function(data) {
+        hideButtons();
         console.log("POST Success: " + data);
 
-        resetForm();
+
       },
       error: function(jqXHR) {
         console.error(jqXHR.responseText);
@@ -107,8 +152,31 @@ $(document).ready(function() {
     });
   };
 
-  function resetForm() {
+  function hideButtons() {
+    setTimeout(
+      function()
+        {$('#output').fadeOut(300) + $('#content_output').fadeOut(300) + $('#date_output').fadeOut(300)}, 700);
+
+    setTimeout(
+      function()
+        {$('#done').fadeIn(800)}, 1200);
+
+    setTimeout(
+      function()
+      {$('#done').fadeOut(1600)}, 1400);
+
+
+
+// if (('#date_output').is( ":visible" )) {
+ // $('#date_output').hide();
+  // var message_display = $('#content_output').val();
+  // var action_display = $('#output').val();
+  // date_display.slideDown();
+
+
     step = 1;
-    input.attr("placeholder", "what do you want to remind to ?");
-  }
+    input.attr("placeholder", "Action       ?");
+
+  };
+
 });

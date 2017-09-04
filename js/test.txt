@@ -1,18 +1,32 @@
-// Pour chaque element reconstruction d'une date au format JS
-// var remtime = new Date(parseInt(reminder.jstime))
-// var time = new Date(Date.now());
-
-remtime.getHours() == time.getHours() &&
-    remtime.getMinutes() == time.getMinutes() &&
-    remtime.getYear() == time.getYear() &&
-    remtime.getMonth() == time.getMonth() &&
-    remtime.getDay() == time.getDay()
+<nav>
+                <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
 
 
-//////////avec la config /////////////
-si je lui dit dans 2 min j'ai 2h de moins -> pas recu
-si je lui dit a 16h02 j'ai 18h02 -> pas recu
+                <div class="dropdown">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form>
+                                <input class="form" type="text" id="phone_number" placeholder="06..." style="background-color: #2F2F2F">
+                                <hr> Vertical checkbox:
+                                <br>
+                                <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                                    <label class="btn active">
+          <input type="checkbox" name='sms' checked><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i> <span> SMS</span>
+        </label>
+                                    <label class="btn">
+          <input type="checkbox" name='pop'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Pop Up</span>
+        </label>
+                                </div>
+                                <button class="btn_submit">submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
-//////////sans la config//////////////
-si je lui dit dans 2 min il save a 2h de moins mais je recoi la notif
-si je lui dit a 16h11 il save 16h11 mais le temps js est de 18h11
+            </nav>
+
+
+  comment faire en sorte de n'avoir qu'un seul array en memoire ?
+  comment rediriger proprement la page aprés le signup
+  faire le css du signup
+  faire foctionner tout ca sur heroku
