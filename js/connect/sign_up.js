@@ -4,8 +4,10 @@ $(document).ready(function() {
         "accept": "application/json",
     };
 
+
     // var apiBaseUrl = "http://127.0.0.1:3000";
     var apiBaseUrl = "https://walt-ia.herokuapp.com";
+
     // on pose un micro sur le formulaire qui ecoute lorsque l'on clique sur submit
     $("#new_user").on('submit', function(event) {
         // echape l'evenement par defaut du bouton submit

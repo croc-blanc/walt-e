@@ -26,7 +26,9 @@
             </nav>
 
 
+
   comment faire en sorte de n'avoir qu'un seul array en memoire ?
   comment rediriger proprement la page aprés le signup
   faire le css du signup
   faire foctionner tout ca sur heroku
+
