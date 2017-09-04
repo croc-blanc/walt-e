@@ -55,3 +55,8 @@
           </div>
     </nav>
 </div>
+
+<div class="squaredFour">
+      <input type="checkbox" value="None" id="squaredFour" name="check" checked />
+      <label for="squaredFour"></label>
+    </div>
