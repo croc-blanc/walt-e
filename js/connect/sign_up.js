@@ -48,12 +48,17 @@ $(document).ready(function() {
             },
 
             error: function(jqXHR, status, text) {
-                if (jqXHR.responseJSON.error) {
+                if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
                     // en cas d'ereur on affiche une notif contenant le message d'erreur
                     // ne fonctionne pas ici
                     $("#form_error_new_user")
                         .show()
                         .html(jqXHR.responseJSON.error);
+                }
+                else {
+                    $("#form_error_new_user")
+                      .show()
+                      .html("Une erreur est survenue, vérifiez votre connexion Internet !");
                 }
             }
         });
