@@ -242,3 +242,15 @@ ul.dropdown {
       }
    }
 }
+
+.btn {
+  background-color: #979797;
+  color: white;
+}
+
+em { text-decoration:underline; }
+
+/*#notification-sms:checked ~ .phone-input {
+  display: block;
+}
+*/
