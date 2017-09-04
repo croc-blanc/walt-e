@@ -3,6 +3,7 @@ $(document).ready(function() {
   var step = 1;
   var actionType;
   var validated = $('#done').hide()
+  var settingsJson = undefined;
   var action = {
     type: undefined,
     when: undefined,
@@ -128,7 +129,7 @@ $(document).ready(function() {
       type: "POST",
       url: apiBaseUrl + "/reminders",
       headers: ajaxHeaders,
-      data: hash,
+      data: hash, settingsJson,
       success: function(data) {
         hideButtons();
         console.log("POST Success: " + data);
@@ -155,17 +156,37 @@ $(document).ready(function() {
       {$('#done').fadeOut(1600)}, 1400);
 
 
-
-// if (('#date_output').is( ":visible" )) {
- // $('#date_output').hide();
-  // var message_display = $('#content_output').val();
-  // var action_display = $('#output').val();
-  // date_display.slideDown();
-
-
     step = 1;
-    input.attr("placeholder", "Action       ?");
+    input.attr("placeholder", "Action ?");
   };
+
+    function handleSettings {
+      var newSettings = []
+        newSettings.push(submit.val())
+      var settingsStringify = JSON.stringify(newSettings);
+      console.log(settingsStringify);
+      // appelle la fonction qui sauvegarde les données en local
+      storeReminder(settingsStringify);
+
+  };
+
+  function storeSettings(settings) {
+    // stock settings en local storage dans une "variable" appelé "settingsPlusId"
+    localStorage.setItem("settingsPlusId", settings);
+    // recupere les données locales (json stingify)
+    getStoredSettings();
+  };
+
+  function getStoredSettings() {
+    // recupere la stringify des settings
+    var settingsString = localStorage.getItem("SettingsPlusId");
+    // appelle la fonction pour reconstruire le local storage en JSON
+    parseToJson(settingsString);
+  };
+
+  function parseToJsonSettings(string){
+    var settingsJson = JSON.parse(string);
+};
 
 
 });
