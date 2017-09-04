@@ -2,10 +2,10 @@ $(document).ready(function() {
   // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
   if (localStorage.getItem("user") != null){
     var ajaxHeaders = {
-                        "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
-                        "X-User-Token": JSON.parse(localStorage.getItem("user")).token
-                      };
-    };
+     "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+     "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+   };
+ };
   //
   var input = $("#txt_name");
   var step = 1;
@@ -84,10 +84,10 @@ $(document).ready(function() {
 
     // debugger;
     if (input.val().length > 10) { 
-    var messageTextSliced = input.val().slice(0, 10);
+      var messageTextSliced = input.val().slice(0, 10);
     } else {
-    var messageText = input.val()
-  }
+      var messageText = input.val()
+    }
     var message = $('#content_output').html(messageText);
     message.hide();
     message.fadeIn();
@@ -116,7 +116,7 @@ $(document).ready(function() {
     var date_display = $('#date_output').html(input.val());
     $('#date_output').hide();
 
-      $('#date_output').fadeIn();
+    $('#date_output').fadeIn();
 
 
 
@@ -124,11 +124,11 @@ $(document).ready(function() {
 
   //     date_display.show("slow");
   //   }
-    action.when = input.val();
-  }
+  action.when = input.val();
+}
 
 
-  function sendAction() {
+function sendAction() {
 
     // send to rails informations about one reminder to save it and get feedback about the when action
     $.ajax({
@@ -151,11 +151,11 @@ $(document).ready(function() {
   function hideButtons() {
     setTimeout(
       function()
-        {$('#output').fadeOut(300) + $('#content_output').fadeOut(300) + $('#date_output').fadeOut(300)}, 700);
+      {$('#output').fadeOut(300) + $('#content_output').fadeOut(300) + $('#date_output').fadeOut(300)}, 700);
 
     setTimeout(
       function()
-        {$('#done').fadeIn(800)}, 1200);
+      {$('#done').fadeIn(800)}, 1200);
 
     setTimeout(
       function()
@@ -172,7 +172,7 @@ $(document).ready(function() {
 
   function handleSettings() {
     var newSettings = [];
-      newSettings.push(submit.val());
+    newSettings.push(submit.val());
     var settingsStringify = JSON.stringify(newSettings);
     console.log(settingsStringify);
     // appelle la fonction qui sauvegarde les données en local
@@ -196,8 +196,8 @@ $(document).ready(function() {
 
   function parseToJsonSettings(string){
     var settingsJson = JSON.parse(string);
-};
+  };
 
-)};
+  )};
 
 
