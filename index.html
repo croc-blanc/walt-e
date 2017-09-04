@@ -1,10 +1,11 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Walt</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/loginstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/loginstyle.css" id="style1" />
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/list.js"></script>
@@ -14,80 +15,51 @@
     <script src="js/menu.js"></script>
     <script src="js/back.js"></script>
 
-  </head>
-  <body>
-    <div id="logged">
-      <div class="ffn_layout" style="display: block;">
-        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+</head>
 
-        <nav>
-          <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
+<body>
+    <div class="ffn_layout" style="display: block;">
+        <div id="logged">
+            <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+            <div class="btn_done" id="done">Walt a bien fait le travail</div>
+            <table>
+                <tr>
+                    <td class="btn_remind" id='output'>
+                    </td>
+                    <td class="btn_content" id='content_output'>
+                    </td>
+                    <td class="btn_date" id='date_output'>
+                    </td>
+                </tr>
+            </table>
 
+            <div id="list">
 
-          <div class="dropdown">
-<div class="row">
-    <div class="col-xs-12">
-    <form>
-  <input class="form" type="text" id="phone_number" placeholder="06..." style="background-color: #2F2F2F">
-      <hr> Vertical checkbox:
-      <br>
-      <div class="btn-group btn-group-vertical" data-toggle="buttons">
-        <label class="btn active">
-          <input type="checkbox" name='sms' checked><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i> <span> SMS</span>
-        </label>
-        <label class="btn">
-          <input type="checkbox" name='pop'><i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i><span> Pop Up</span>
-        </label>
-      </div>
-      <button class="btn_submit">submit</button>
-</form>
-    </div>
-  </div>
-          </div>
-
-        </nav>
-
-
-        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
-     <!--    <nav style="display: list-item;"> -->
-        <table>
-          <tr>
-            <td class="btn_remind" id='output'>
-            </td>
-            <td class="btn_content" id='content_output'>
-            </td>
-            <td class="btn_date" id='date_output'>
-            </td>
-          </tr>
-        </table>
-
-        <div id="list">
-
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div id="unlogged">
-      <div class="login">
-        <form id="new_session" class="form-horizontal">
-          <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
+        <div id="unlogged">
+            <div class="login">
+                <form id="new_session" class="form-horizontal">
+                    <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
+                        </div>
+                        <div id="action" class="form-group">
+                            <div class="form-inline" id="formSign">
+                                <button type="submit" class="button input-group mb-12"> Login</button>
+                                <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group col-md-4">
-              <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
-            </div>
-            <div id="action" class="form-group">
-              <div class="form-inline" id="formSign">
-                <button type="submit" class="button input-group mb-12"> Login</button>
-                <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
-              </div>
-            </div>
-          </div>
-        </form>
         </div>
     </div>
-  </body>
+</body>
+
 </html>
-
