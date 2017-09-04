@@ -10,12 +10,12 @@ $(document).ready(function() {
   };
 
   var ajaxHeaders = {
-    "X-User-Email": "gregoire.d@gmail.com",
-    "X-User-Token": "PdFyyk-v1TNpJxiyDo1z"
+      "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+      "X-User-Token": JSON.parse(localStorage.getItem("user")).token
   };
 
-  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
-
+  var apiBaseUrl = "https://walt-ia.herokuapp.com";
+// var apiBaseUrl = "http://127.0.0.1:3000";
   getSettings() {
     sms.settings + popUp.settings + phoneNumber.settings = submit.val();
   }
@@ -23,7 +23,7 @@ $(document).ready(function() {
 function sendSettings() {
     $.ajax({
       type: "POST",
-      url: apiBaseUrl + "/reminders",
+      url: apiBaseUrl + "/api/v1/reminders",
       headers: ajaxHeaders,
       data: settings,
       success: function(data) {

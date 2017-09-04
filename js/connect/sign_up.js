@@ -4,7 +4,10 @@ $(document).ready(function() {
         "accept": "application/json",
     };
 
-    var apiBaseUrl = "http://127.0.0.1:3000";
+
+    // var apiBaseUrl = "http://127.0.0.1:3000";
+    var apiBaseUrl = "https://walt-ia.herokuapp.com";
+
     // on pose un micro sur le formulaire qui ecoute lorsque l'on clique sur submit
     $("#new_user").on('submit', function(event) {
         // echape l'evenement par defaut du bouton submit
@@ -43,17 +46,21 @@ $(document).ready(function() {
                 localStorage.setItem("user", JSON.stringify(user));
                 $("#logged").show();
                 $("#unlogged").hide();
-                window.location.href = 'index.html';
-                location.reload();
+
             },
 
             error: function(jqXHR, status, text) {
-                if (jqXHR.responseJSON.error) {
+                if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
                     // en cas d'ereur on affiche une notif contenant le message d'erreur
                     // ne fonctionne pas ici
                     $("#form_error_new_user")
                         .show()
                         .html(jqXHR.responseJSON.error);
+                }
+                else {
+                    $("#form_error_new_user")
+                      .show()
+                      .html("Une erreur est survenue, vérifiez votre connexion Internet !");
                 }
             }
         });
