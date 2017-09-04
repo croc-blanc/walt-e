@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Walt Extention",
-  "description": "Assisant personnel",
-  "version": "1.0",
+  "description": "Your own IA personal assistant",
+  "version": "1.1",
   "permissions": [
     "http://*/*",
     "https://*/*",
@@ -11,13 +11,16 @@
   ],
   "browser_action": {
           "default_icon": {
-            "127": "img/walt_128.png"
+            "128": "img/icon128.png"
           },
           "default_title": "Walt",
           "default_popup": "index.html"
         },
   "icons": {
-    "128": "img/walt_128.png"
+    "128": "img/icon128.png",
+    "16": "img/icon16.png",
+    "48": "img/icon48.png"
+
   },
   "background": {
     "scripts": ["js/jquery.js", "js/notify.js", "js/menu.js"]
