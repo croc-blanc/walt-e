@@ -94,7 +94,7 @@ table {
 
 /* Setting things up */
 body {
-  padding: 2em;
+  padding: .5em;
   background-color: #2F2F2F;
 }
 a {
@@ -108,18 +108,19 @@ nav {
   position: relative;
 }
 .dropdown-toggle {
-  padding: .5em 1em;
+  padding: .5em;
   background: #2F2F2F;
   border-radius: .2em .2em 0 0;
 }
 ul.dropdown {
+  color: #979797;
   display:none;
   position: absolute;
   top: 100%;
   margin-top: .5em;
   background: #2F2F2F;
   min-width: 12em;
-  padding: 0;
+  padding: 0 2em;
   border-radius: 0 0 .2em .2em;
     li {
       list-style-type: none;
