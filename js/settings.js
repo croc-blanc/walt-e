@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // $(document).ready(function() {
 //   var settings = {
 //   phone_notification: undefined,

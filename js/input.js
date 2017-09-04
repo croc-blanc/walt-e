@@ -21,8 +21,8 @@ $(document).ready(function() {
     reminder: action
   };
 
-  var apiBaseUrl = "http://127.0.0.1:3000/api/v1";
-
+  // var apiBaseUrl = "http://127.0.0.1:3000";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
 
   input.on('keyup', function(event) {
@@ -133,7 +133,7 @@ function sendAction() {
     // send to rails informations about one reminder to save it and get feedback about the when action
     $.ajax({
       type: "POST",
-      url: apiBaseUrl + "/reminders",
+      url: apiBaseUrl + "/api/v1/reminders",
       headers: ajaxHeaders,
       data: hash, settingsJson,
       success: function(data) {
