@@ -34,7 +34,7 @@ $(document).ready(function() {
         $.ajax({
             // hender de connexion a l'api pour recevoir la liste des reminders
             type: "GET",
-            url: apiBaseUrl + "/reminders",
+            url: apiBaseUrl + "/api/v1/reminders",
             headers: ajaxHeaders,
             success: function(data) {
                 // appelle la fonction qui traitera les datas
@@ -96,7 +96,7 @@ $(document).ready(function() {
       remindersIntervalId = setInterval(function() {
             reminders.forEach(function(reminder, index) {
                 // comparaison entre l'heure du reminder et l'heure actuelle
-                if (Date.parse(reminder.time) <= Date.now() + 15000) {
+                if (Date.parse(reminder.time) <= Date.now() + 9000) {
                     // affiche une notification si c'est l'heure
                     notifyMe(reminder);
                     reminders.splice(index, 1);

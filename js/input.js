@@ -85,10 +85,12 @@ $(document).ready(function() {
     // debugger;
     if (input.val().length > 10) { 
       var messageTextSliced = input.val().slice(0, 10);
+      var message = $('#content_output').html(messageTextSliced);
+
     } else {
       var messageText = input.val()
+      var message = $('#content_output').html(messageText);
     }
-    var message = $('#content_output').html(messageText);
     message.hide();
     message.fadeIn();
 
@@ -159,45 +161,44 @@ function sendAction() {
 
     setTimeout(
       function()
-      {$('#done').fadeOut(1600)}, 1400);
+      {$('#done').fadeOut(1600)}, 2500);
 
 
     step = 1;
     input.attr("placeholder", "Action ?");
   };
 
-  ($'button').click(function() {
+  $("button").click(function() {
     handleSettings();
-  }
 
-  function handleSettings() {
-    var newSettings = [];
-    newSettings.push(submit.val());
-    var settingsStringify = JSON.stringify(newSettings);
-    console.log(settingsStringify);
+    function handleSettings() {
+      var newSettings = [];
+      newSettings.push(submit.val());
+      var settingsStringify = JSON.stringify(newSettings);
+      console.log(settingsStringify);
     // appelle la fonction qui sauvegarde les données en local
     storeSettings(settingsStringify);
 
-  };
+    };
 
-  function storeSettings(settings) {
-    // stock settings en local storage dans une "variable" appelé "settingsPlusId"
-    localStorage.setItem("settingsPlusId", settings);
-    // recupere les données locales (json stingify)
-    getStoredSettings();
-  };
+    function storeSettings(settings) {
+      // stock settings en local storage dans une "variable" appelé "settingsPlusId"
+      localStorage.setItem("settingsPlusId", settings);
+      // recupere les données locales (json stingify)
+      getStoredSettings();
+    };
 
-  function getStoredSettings() {
-    // recupere la stringify des settings
-    var settingsString = localStorage.getItem("SettingsPlusId");
-    // appelle la fonction pour reconstruire le local storage en JSON
-    parseToJson(settingsString);
-  };
+    function getStoredSettings() {
+      // recupere la stringify des settings
+      var settingsString = localStorage.getItem("SettingsPlusId");
+      // appelle la fonction pour reconstruire le local storage en JSON
+      parseToJson(settingsString);
+    };
 
-  function parseToJsonSettings(string){
-    var settingsJson = JSON.parse(string);
-  };
-
-  )};
+    function parseToJsonSettings(string){
+      var settingsJson = JSON.parse(string);
+    };
+  });
+});
 
 

@@ -17,7 +17,7 @@ $(document).ready(function(){
   function getStoredReminders() {
     // recupere la stringify des reminders
     var remindString = localStorage.getItem("remindplusiduser");
-    console.log("getStoredReminders " + remindString);
+    console.log("getStoredReminders" + remindString);
     parseToJson(remindString);
   };
 
@@ -37,7 +37,7 @@ $(document).ready(function(){
     console.log("showRemindersValue " + reminders);
     var i = 100;
     reminders.forEach(function(reminder) {
-      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content + ' ' + reminder.date).hide();
+      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.date).hide();
       setTimeout(function() {
         r.fadeIn(500)
       }, i += 300);
