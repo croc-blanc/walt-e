@@ -1,80 +1,29 @@
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Walt</title>
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/jquery.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/input.js"></script>
-  <script src="js/list.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>Walt</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/list.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/connect/log_in.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/back.js"></script>
 
+  </head>
+  <body>
+    <div id="logged">
+      <div class="ffn_layout" style="display: block;">
+        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
 
-
-</head>
-<body>
-  <div class="ffn_layout" style="display: block;">
-
-    <div class="navbar-wagon">
-      <!-- Logo -->
-      <!-- <a href="/" class="navbar-wagon-brand">
-        <img src="img/walt_128.png" alt="logo">
-      </a> -->
-
-      <!-- Right Navigation -->
-      <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-        <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-        <input type="checkbox" class="navbar-wagon-item navbar-wagon-link" value="Pop-up" >
-
-        <input type="checkbox" value="SMS" />SMS
-
-
-        <!-- Profile picture with dropdown list -->
-        <div class="navbar-wagon-item">
+        <nav>
+          <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
           <div class="dropdown">
-            <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dropdown appearing on mobile only -->
-      <div class="navbar-wagon-item hidden-md hidden-lg">
-        <div class="dropdown">
-          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li><a href="#">Host</a></li>
-            <li><input type="checkbox" value="Pop-up" />SMS
-              <li><input type="checkbox" value="SMS" />SMS
-              </ul>
-            </div>
-          </div>
-        </div>
-        <input class="form" type="text" id="txt_name" placeholder="Action ?" style="background-color: #2F2F2F">
-        <div class="btn_done" id='done'> Walt will remind you to do it ! </div>
-        <table>
-          <tr>
-            <td class="btn_remind" id='output'>
-            </td>
-            <td class="btn_content" id='content_output'>
-            </td>
-            <td class="btn_date" id='date_output'>
-            </td>
-          </tr>
-        </table>
-        <div id="list">
-
-        </div>
-        <!-- in dropdown (settings form) ! -->
-         <div class="row">
+<div class="row">
     <div class="col-xs-12">
     <form>
   <input class="form" type="text" id="phone_number" placeholder="06..." style="background-color: #2F2F2F">
@@ -92,6 +41,50 @@
 </form>
     </div>
   </div>
+          </div>
+        </nav>
 
-      </body>
-      </html>
+
+        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+        <nav style="display: list-item;">
+        <table>
+          <tr>
+            <td class="btn_remind" id='output'>
+            </td>
+            <td class="btn_content" id='content_output'>
+            </td>
+            <td class="btn_date" id='date_output'>
+            </td>
+          </tr>
+        </table>
+
+        <div id="list">
+
+        </div>
+      </div>
+    </div>
+
+    <div id="unlogged">
+      <div class="login">
+        <form id="new_session" class="form-horizontal">
+          <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
+            </div>
+            <div class="form-group col-md-4">
+              <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
+            </div>
+            <div id="action" class="form-group">
+              <div class="form-inline" id="formSign">
+                <button type="submit" class="button input-group mb-12"> Login</button>
+                <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
+  </body>
+</html>
+

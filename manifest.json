@@ -20,6 +20,6 @@
     "128": "img/walt_128.png"
   },
   "background": {
-    "scripts": ["js/jquery.js", "js/notify.js"]
+    "scripts": ["js/jquery.js", "js/notify.js", "js/menu.js"]
   }
 }
