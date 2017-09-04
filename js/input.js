@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
+  if (localStorage.getItem("user") != null){
+    var ajaxHeaders = {
+                        "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+                        "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+                      };
+    };
+  //
   var input = $("#txt_name");
   var step = 1;
   var actionType;
@@ -12,12 +20,9 @@ $(document).ready(function() {
   var hash = {
     reminder: action
   };
-  var ajaxHeaders = {
-    "X-User-Email": "gregoire.d@gmail.com",
-    "X-User-Token": "PdFyyk-v1TNpJxiyDo1z"
-  };
 
-  var apiBaseUrl = "https://walt-ia.herokuapp.com/api/v1";
+  var apiBaseUrl = "http://127.0.0.1:3000/api/v1";
+
 
 
   input.on('keyup', function(event) {
@@ -61,8 +66,10 @@ $(document).ready(function() {
     if (actionType == "reminder", "remind", "remindme") {
       var remind = $('#output').html(input.val());
       remind.hide();
+
       remind.fadeIn();
       input.attr("placeholder", "What ?");
+
     }
   }
 
@@ -84,7 +91,8 @@ $(document).ready(function() {
     var message = $('#content_output').html(messageText);
     message.hide();
     message.fadeIn();
-  }
+
+  };
 
 
   function extractActionType() {
@@ -189,5 +197,7 @@ $(document).ready(function() {
   function parseToJsonSettings(string){
     var settingsJson = JSON.parse(string);
 };
+
+)};
 
 
