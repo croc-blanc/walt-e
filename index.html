@@ -4,10 +4,12 @@
     <title>Walt</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loginstyle.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/list.js"></script>
     <script src="js/input.js"></script>
+    <script src="js/connect/log_in.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/back.js"></script>
@@ -16,6 +18,8 @@
   <body>
     <div id="logged">
       <div class="ffn_layout" style="display: block;">
+        <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+
         <nav>
           <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
           <ul class="dropdown">
@@ -45,5 +49,26 @@
       </div>
     </div>
 
+    <div id="unlogged">
+      <div class="login">
+        <form id="new_session" class="form-horizontal">
+          <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
+            </div>
+            <div class="form-group col-md-4">
+              <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
+            </div>
+            <div id="action" class="form-group">
+              <div class="form-inline" id="formSign">
+                <button type="submit" class="button input-group mb-12"> Login</button>
+                <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
   </body>
 </html>
