@@ -44,7 +44,10 @@ $(document).ready(function() {
                 };
                 // on sauvegarde en local l'email et le token d'authentification
                 localStorage.setItem("user", JSON.stringify(user));
-                chrome.runtime.reload();
+
+                // on rafraichit l'app
+                chrome.runtime.reload()
+                // on retourne sur la page principale de walt
                 window.location.href = "index.html";
 
             },
