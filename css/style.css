@@ -16,6 +16,7 @@ background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, F
 
 .placeholder {
   color:darkgrey;
+
 }
 
 .btn_remind {
@@ -224,15 +225,15 @@ nav {
 
 .dropdown {
 /*  background-color: dimgrey !important;*/
-background: #2C3E50;   /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #4CA1AF, #2C3E50) !important!;  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #4CA1AF, #2C3E50) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #434343, #000000) !important;  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #434343, #000000) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .dropdown-toggle {
   padding: .5em;
-  background: #2F2F2F;
+/*  background: #2F2F2F;*/
   border-radius: .2em .2em 0 0;
 }
 ul.dropdown {
@@ -259,12 +260,13 @@ ul.dropdown {
 }
 
 .btn {
-  background-color: #979797;
+/*  background-color: #979797;*/
   color: white;
   letter-spacing: 2px;
   position: absolute;
   margin-top: 5px;
   width: 153px;
+
 
 }
 
@@ -281,7 +283,7 @@ em { text-decoration:underline; }
 .notification {
   display: block;
   position: absolute;
-  margin-top: 9px;
+  margin-top: 17px;
   left: 61px;
 }
 
