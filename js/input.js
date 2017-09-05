@@ -26,8 +26,8 @@ $(document).ready(function() {
     reminder: action
   };
 
-  var apiBaseUrl = "http://127.0.0.1:3000";
-  // var apiBaseUrl = "https://walt-ia.herokuapp.com";
+  //var apiBaseUrl = "http://127.0.0.1:3000";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
 
   input.on('keyup', function(event) {
@@ -168,13 +168,13 @@ $(document).ready(function() {
   $(".form_settings input[type=checkbox]").on("click", function(event) {
     var input = $(this);
 
-    newSettings[input.id] = input.prop('checked');
-    console.log('yoyo')
+    newSettings[input.attr("id")] = input.prop('checked');
+    console.log('yoyo', input.attr("id"))
   });
 
   $('#submit_settings').click(function() {
-    $('#phone_number').val("");
     newSettings["phone_number"] = $('#phone_number').val();
+    $('#phone_number').val("");
     console.log('yo');
 
 
