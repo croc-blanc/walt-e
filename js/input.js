@@ -168,8 +168,8 @@ $(document).ready(function() {
   $(".form_settings input[type=checkbox]").on("click", function(event) {
     var input = $(this);
 
-    newSettings[input.id] = input.prop('checked');
-    console.log('yoyo')
+    newSettings[input.attr("id")] = input.prop('checked');
+    console.log('yoyo', input.attr("id"))
   });
 
   $('#submit_settings').click(function() {
