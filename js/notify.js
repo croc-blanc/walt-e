@@ -112,7 +112,7 @@ $(document).ready(function() {
             Notification.requestPermission();
         } else {
             var notification = new Notification('Walt Notification', {
-                icon: '/img/walt_128.png',
+                icon: '/img/icon128.png',
                 body: reminder.content,
                 sound: 'sound/walt.wav',
             });
