@@ -67,7 +67,7 @@ $(document).ready(function() {
     // also i attribute the value to the variable action to send it in ajax
     // also change placeholder
 
-    if (actionType == "reminder", "remind", "remindme") {
+    if (actionType == "reminder", "remind", "remindme", "Reminder", "REMINDER", "rappelle moi", "rappel moi") {
       var remind = $('#output').html(input.val());
       $('#list').empty();
       remind.hide();
