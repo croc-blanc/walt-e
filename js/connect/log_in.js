@@ -46,7 +46,7 @@ $(document).ready(function() {
                 localStorage.setItem("user", JSON.stringify(user));
                 $("#logged").show();
                 $("#unlogged").hide();
-                location.reload();
+                chrome.runtime.reload();
             },
 
             error: function(jqXHR, status, text) {

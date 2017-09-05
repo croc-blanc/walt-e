@@ -44,6 +44,7 @@ $(document).ready(function() {
                 };
                 // on sauvegarde en local l'email et le token d'authentification
                 localStorage.setItem("user", JSON.stringify(user));
+                chrome.runtime.reload();
                 window.location.href = "index.html";
 
             },
