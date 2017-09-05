@@ -1,11 +1,15 @@
-$(document).ready(function(){
-console.log("document ready on list.js");
+$(document).ready(function() {
+  setTimeout(function() {
+    $("#txt_name").focus();
+  }, 400 );
   var remindersValues = [];
   var input = $("#txt_name").on("keyup", function(e) {
     console.log("list keyup");
     if(e.which == 13) {
       if(input.val() == 'list') {
+        $('#list').empty();
         getStoredReminders();
+        input.val('');
 
       }
     }
@@ -16,7 +20,7 @@ console.log("document ready on list.js");
   function getStoredReminders() {
     // recupere la stringify des reminders
     var remindString = localStorage.getItem("remindplusiduser");
-    console.log("getStoredReminders " + remindString);
+    console.log("getStoredReminders" + remindString);
     parseToJson(remindString);
   };
 
@@ -39,7 +43,7 @@ console.log("document ready on list.js");
     del.attr("src", "/img/delete.png");
     var i = 100;
     reminders.forEach(function(reminder, index) {
-      var r = $('<br>' + "<div class='btn_list' />' + '<img id='"+ index +"' src='/img/delete.png'/>'<br>").appendTo('#list').text('reminder' + ' ' + reminder.content + ' ' + reminder.date).hide();
+      var r = $('<br>' + "<div class='btn_list' />' + '<img id='"+ index +"' src='/img/delete.png'/>'<br>").appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
       setTimeout(function() {
         r.fadeIn(500)
       }, i += 300);
