@@ -4,6 +4,7 @@ $(document).ready(function() {
         "accept": "application/json",
     };
 
+
     // var apiBaseUrl = "http://127.0.0.1:3000";
     var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
