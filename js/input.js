@@ -87,8 +87,8 @@ $(document).ready(function() {
     input.attr("placeholder", "When ?");
 
     // debugger;
-    if (input.val().length > 15) { 
-      var messageTextSliced = input.val().slice(0, 10);
+    if (input.val().length > 25) { 
+      var messageTextSliced = input.val().slice(0, 20);
       var message = $('#content_output').html(messageTextSliced);
     } else {
       var messageText = input.val();
