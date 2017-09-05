@@ -18,9 +18,32 @@
 
 <body>
     <div class="ffn_layout" style="display: block;">
+
+    <div class="setting-container">
+      <nav>
+          <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
+          <ul class="dropdown">
+            <div class="setting-display">
+              <div class="notification" style="display: block;">
+                <li><em>Notifications :</em>
+                  <input type="checkbox" value="Pop-up" id="notif-pop-up" name="check" checked />
+                  <label for="notif-pop-up"></label> by Pop-Ups
+
+                  <input type="checkbox" value="Sms" id="notif-sms" name="check" checked />
+                  <label for="notif-sms"></label> by Text Message
+              </div>
+              <div class="edit-number">
+                <li><em>Edit :</em>
+                <li>Phone Number <input type="form" placeholder="06..." />
+                <button type="button" class="btn btn-secondary">Submit</button>
+              </div>
+            </div>
+          </ul>
+      </nav>
+    </div>
         <div id="logged">
             <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
-            <div class="btn_done" id="done">Walt a bien fait le travail</div>
+            <div class="btn_done" id="done">Walt has done his job !</div>
             <table>
                 <tr>
                     <td class="btn_remind" id='output'>

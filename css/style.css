@@ -160,7 +160,7 @@ label:hover input[type="checkbox"] ~ i.fa {
 color: #7AA3CC;
 }
 
-div[data-toggle="buttons"] label.active{
+/*div[data-toggle="buttons"] label.active{
     color: #7AA3CC;
 }
 
@@ -185,7 +185,7 @@ color: #c8c8c8;
 -ms-user-select: none;
 -o-user-select: none;
 user-select: none;
-}
+}*/
 
 div[data-toggle="buttons"] label:hover {
 color: #7AA3CC;
@@ -241,4 +241,24 @@ ul.dropdown {
         display: block;
       }
    }
+}
+
+.btn {
+  background-color: #979797;
+  color: white;
+}
+
+em { text-decoration:underline; }
+
+/*#notification-sms:checked ~ .phone-input {
+  display: block;
+}
+*/
+.setting-display {
+  display: flex;
+  justify-content: space-around;
+}
+
+.notification {
+  display: block;
 }
