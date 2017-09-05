@@ -2,10 +2,6 @@ $(document).ready(function() {
   setTimeout(function() {
     $("#txt_name").focus();
   }, 400 );
-
-
-
-  console.log("document ready on list.js");
   var remindersValues = [];
   var input = $("#txt_name").on("keyup", function(e) {
     console.log("list keyup");
@@ -42,13 +38,41 @@ $(document).ready(function() {
 // create div and display reminder content and date for each reminder
   function showRemindersValue(reminders) {
     console.log("showRemindersValue " + reminders);
+    // comment ajouter l'image dans la div des reminders ?
+    var del = $( '<img />' )
+    del.attr("src", "/img/delete.png");
     var i = 100;
-    reminders.forEach(function(reminder) {
-      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
+    reminders.forEach(function(reminder, index) {
+      var r = $('<br>' + "<div class='btn_list' />' + '<img id='"+ index +"' src='/img/delete.png'/>'<br>").appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
       setTimeout(function() {
         r.fadeIn(500)
       }, i += 300);
+      $('#'+index).click(function(){
+        removable(reminder);
+      });
+    });
+  };
 
+  function removable(reminder) {
+
+      var apiBaseUrl = "http://127.0.0.1:3000";
+      // var apiBaseUrl = "https://walt-ia.herokuapp.com";
+      var ajaxHeaders = {
+      "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
+      "X-User-Token": JSON.parse(localStorage.getItem("user")).token
+  };
+
+    $.ajax({
+      type: "DELETE",
+      url: apiBaseUrl + "/api/v1/reminders/"+reminder.id,
+      headers: ajaxHeaders,
+      success: function(data) {
+        alert(reminder.content + " Has been removed : ");
+      },
+      error: function(jqXHR) {
+        console.error(jqXHR.responseText);
+      }
     });
   };
 });
+

@@ -1,31 +1,22 @@
-.ffn_layout {
-    display: flex;
-    width: 500px;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 40px;
-    backface-visibility: hidden;
-    will-change: transform;
-    -webkit-user-drag: none;
-    user-select: none;
-    border-radius: 10px;
-    perspective: 700px;
-  }
+.form {
+  font-family: Avenir-LightOblique;
+  outline: 0;
+  background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  .form {
-    font-family: Avenir-LightOblique;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-    color: white;
-  }
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: white;
+}
+
+.placeholder {
+  color:darkgrey;
+}
 
 .btn_remind {
 border: 1px solid #9890E3;
@@ -110,7 +101,13 @@ margin: 0 auto;
 }
 
 body {
-  background-color: #2F2F2F;
+/*  background-color: #2F2F2F;*/
+background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  position: relative;
+  width: 500px;
 }
 
 
@@ -121,90 +118,16 @@ table {
   margin-right: auto;
 }
 
-
-/*settings*/
-
-label.btn span {
-  font-size: 1.5em ;
+html {
+  height: 78px;
 }
-
-label input[type="radio"] ~ i.fa.fa-circle-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="radio"] ~ i.fa.fa-dot-circle-o{
-    display: none;
-}
-label input[type="radio"]:checked ~ i.fa.fa-circle-o{
-    display: none;
-}
-label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
-    color: #7AA3CC;    display: inline;
-}
-label:hover input[type="radio"] ~ i.fa {
-color: #7AA3CC;
-}
-
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #7AA3CC;    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label.active{
-    color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label {
-display: inline-block;
-padding: 6px 12px;
-margin-bottom: 0;
-font-size: 14px;
-font-weight: normal;
-line-height: 2em;
-text-align: left;
-white-space: nowrap;
-vertical-align: top;
-cursor: pointer;
-background-color: none;
-border: 0px solid
-#c8c8c8;
-border-radius: 3px;
-color: #c8c8c8;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
-}
-
-div[data-toggle="buttons"] label:hover {
-color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
--webkit-box-shadow: none;
-box-shadow: none;
-}
-
-
-
 
 @import "compass/css3";
 
 /* Setting things up */
 body {
   padding: .5em;
-  background-color: #2F2F2F;
+/*  background-color: #2F2F2F;*/
   margin-top: -6px;
   padding-left: 0px;
 }
@@ -218,21 +141,33 @@ a {
 nav {
   position: relative;
 }
+
+.dropdown {
+/*  background-color: dimgrey !important;*/
+background: #2C3E50;   /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #4CA1AF, #2C3E50) !important!;  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #4CA1AF, #2C3E50) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
 .dropdown-toggle {
   padding: .5em;
   background: #2F2F2F;
   border-radius: .2em .2em 0 0;
 }
 ul.dropdown {
-  color: #979797;
+  color: whitesmoke;
   display:none;
   position: absolute;
   top: 100%;
   margin-top: .5em;
   background: #2F2F2F;
   min-width: 12em;
-  padding: 0 2em;
-  border-radius: 0 0 .2em .2em;
+/*  padding: 0 2em;*/
+  border-radius: 5pxpx;
+  left:0px;
+  height: 110px;
+  width: 507px;
     li {
       list-style-type: none;
       a {
@@ -241,4 +176,45 @@ ul.dropdown {
         display: block;
       }
    }
+}
+
+.btn {
+  background-color: #979797;
+  color: white;
+  letter-spacing: 2px;
+  position: absolute;
+  margin-top: 5px;
+  width: 153px;
+}
+
+em { text-decoration:underline; }
+
+/*#notification-sms:checked ~ .phone-input {
+  display: block;
+}
+*/
+.setting-display {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.notification {
+  display: block;
+
+  position: absolute;
+  margin-top: 9px;
+  left: 61px;
+}
+
+.web-notif {
+  margin-bottom: 9px;
+}
+
+
+.edit-number {
+  display: block;
+  position: absolute;
+  right: 90px;
+  margin-top:10px;
 }

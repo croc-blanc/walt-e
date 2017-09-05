@@ -26,8 +26,8 @@ $(document).ready(function() {
     reminder: action
   };
 
-  // var apiBaseUrl = "http://127.0.0.1:3000";
-  var apiBaseUrl = "https://walt-ia.herokuapp.com";
+  var apiBaseUrl = "http://127.0.0.1:3000";
+  // var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
 
   input.on('keyup', function(event) {
@@ -87,10 +87,9 @@ $(document).ready(function() {
     input.attr("placeholder", "When ?");
 
     // debugger;
-    if (input.val().length > 10) { 
+    if (input.val().length > 15) { 
       var messageTextSliced = input.val().slice(0, 10);
       var message = $('#content_output').html(messageTextSliced);
-
     } else {
       var messageText = input.val();
       var message = $('#content_output').html(messageText);
@@ -104,7 +103,7 @@ $(document).ready(function() {
   function extractActionType() {
     // check if the input is correct and assign that value to action.type (to save it in rails)
     var value = input.val();
-    var validActions = ["reminder", "remind", "rappelle"];
+    var validActions = ["reminder", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi"];
 
     if (validActions.indexOf(value) >= 0) {
       action.type = value;
@@ -123,12 +122,6 @@ $(document).ready(function() {
 
     $('#date_output').fadeIn();
 
-
-
-    //   if (date_display.is( ":hidden" )) {
-
-    //     date_display.show("slow");
-    //   }
     action.when = input.val();
   };
 
@@ -136,16 +129,6 @@ $(document).ready(function() {
   function sendAction() {
     // send to rails informations about one reminder to save it and get feedback about the when action
     var data = $.extend({}, hash, getSettings());
-
-
-    // data = {
-    //   when: "",
-    //   content: "",
-    //   type: "reminder",
-    //   phone_number: "06..."
-    //   web_notification: true,
-    //   phone_notification: false
-    // }
 
     $.ajax({
       type: "POST",
@@ -189,33 +172,6 @@ $(document).ready(function() {
     console.log('yoyo')
   });
 
-  // $('#phone_notification').click(function() {
-  //   var input = $('#phone_notification');
-  //   newSettings[input.id] = input.prop('checked');
-  // });
-
-
-  // $('#web_notification').click(function() {
-  //   handleWeb();
-  // });
-
-  // function handleWeb() {
-  //   var checked = $('#web_notification').prop('checked');
-
-  //   alert("Checkbox state (method 1) = " + checked);
-  //   newSettings["web_notification"] = checked;
-  // };
-
-  // $('#phone_notification').click(function() {
-  //   handlePhone();
-  // });
-
-  // function handlePhone() {
-  //   alert("Checkbox state (method 1) = " + $('#phone_notification').prop('checked'));
-  //   action.phone_notification = $('#phone_notification').val();
-  //   newSettings.push(action.phone_notification);
-  // };
-
   $('#submit_settings').click(function() {
     $('#phone_number').val("");
     newSettings["phone_number"] = $('#phone_number').val();
@@ -224,24 +180,6 @@ $(document).ready(function() {
 
     storeSettings();
   });
-
-
-
-        // action.phone_notification = true
-        // newSettings.push(action.phone_notification)
-      // else {
-      //   console.log("false");
-      //   return;
-      // }
-    //     action.phone_notification = false
-    //   }
-    //     newSettings.push(action.phone_notification)
-    //   var settingsStringify = JSON.stringify(newSettings);
-    //   console.log(settingsStringify);
-    // // appelle la fonction qui sauvegarde les données en local
-    // storeSettings(settingsStringify);
-    // settingsJson = newSettings;
-
 
   function storeSettings() {
     // stock settings en local storage dans une "variable" appelé "settingsPlusId"

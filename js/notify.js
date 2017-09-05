@@ -15,8 +15,8 @@ $(document).ready(function() {
     };
 
 
-    // var apiBaseUrl = "http://127.0.0.1:3000";
-    var apiBaseUrl = "https://walt-ia.herokuapp.com";
+    var apiBaseUrl = "http://127.0.0.1:3000";
+    // var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
     // check si les notifs sont disponible sur le navigateur
     if (!Notification) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 
     function handleReminders(reminders) {
-        var newReminders = []
+      var newReminders = [];
             // ajoute les reminders seulement si il ne sont pas encore passé
         reminders.forEach(function(reminder) {
             if (Date.parse(reminder.time) > Date.now()) {
@@ -90,19 +90,18 @@ $(document).ready(function() {
 
     function runRemindersTime(reminders) {
       if (remindersIntervalId) {
-        console.log('clearInterval', remindersIntervalId);
         clearTimeout(remindersIntervalId);
       };
 
       remindersIntervalId = setInterval(function() {
-            console.log('setInterval', remindersIntervalId);
+            console.log(reminders);
             reminders.forEach(function(reminder, index) {
-                // comparaison entre l'heure du reminder et l'heure actuelle
-                if (Date.parse(reminder.time) <= Date.now() + 9000) {
+                // comparaison entre l'heure du reminder et l'heure actuelle si le reminder est dans le futur il est ajouter en local
+                // A verifier si le reminder a un status notif false
+                if (Date.parse(reminder.time) <= Date.now() + 5000) {
                     // affiche une notification si c'est l'heure
                     notifyMe(reminder);
                     reminders.splice(index, 1);
-                    console.log("Remaining reminders :", reminders);
                 }
             });
         }, 5 * 1000);
@@ -113,7 +112,7 @@ $(document).ready(function() {
             Notification.requestPermission();
         } else {
             var notification = new Notification('Walt Notification', {
-                icon: '/img/walt_128.png',
+                icon: '/img/icon128.png',
                 body: reminder.content,
                 sound: 'sound/walt.wav',
             });
@@ -130,33 +129,8 @@ $(document).ready(function() {
 
     function snoozeNotif(reminder) {
         // transforme les attributs de du reminder a répéter avant de le transmettre au serveur
-        var newTime = Date.parse(reminder.time) + 30000; // snooze pour 30 sec
-        reminder.jstime = newTime;
-        reminder.id = null;
-        reminder.time = null;
-        var action = {
-            type: "reminders",
-            when: newTime,
-            content: reminder.content
-        };
-        var hash = {
-            reminder: action
-        };
-        $.ajax({
-            type: "POST",
-            url: apiBaseUrl + "/api/v1/reminders",
-            headers: ajaxHeaders,
-            data: hash,
-            success: function(data) {
-                console.log("SNOOZE Success: " + data);
-                alert("La répétition dans 5 min à était activé");
-            },
-            error: function(jqXHR) {
-                console.error(jqXHR.responseText);
-                alert("Une erreur est survenue :" + jqXHR.responseText)
-                console.dir(hash);
-            }
-        });
+        reminder.time = new Date(Date.parse(reminder.time) + 60000);
+        // la date du reminder est bien modifier, il faut rouver comment l'envoyer a newReminders
     };
 
 });

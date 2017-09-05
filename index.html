@@ -1,86 +1,92 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Walt</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/loginstyle.css" id="style1" />
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/list.js"></script>
-    <script src="js/input.js"></script>
-    <script src="js/connect/log_in.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/back.js"></script>
+  <meta charset="utf-8">
+  <title>Walt</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/loginstyle.css" id="style1" />
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/list.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/connect/log_in.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/back.js"></script>
 
 </head>
 
 <body>
-    <div class="ffn_layout" style="display: block;">
-
-    <div class="setting">
-      <nav>
+  <div class="ffn_layout" style="display: block;">
+    <div id="logged">
+      <div class="setting-container">
+        <nav>
           <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
           <ul class="dropdown">
-          <form class="form_settings">
-            <li><a href="#">Notifications :</a></li>
-            <div class="squaredFour">
-              <input type="checkbox" value="Pop-up" id="web_notification" name="check" checked />
-              <label for="squaredFour"></label> by Pop-Ups
-               <input type="checkbox" value="Sms" id="phone_notification" name="check" checked />
-              <label for="squaredFour"></label> by Text Message
+            <form class="form_settings">
+              <div class="setting-display">
+               <div class="notification" style="display: block;">
+                <p><em>Notifications :</em></p>
+                <div class="web-notif">
+                  <input type="checkbox" value="Pop-up" id="notif-pop-up" name="check" checked />
+                  <label for="notif-pop-up"></label> Web notification
+                </div>
+                <div class="sms-notif">
+                  <input type="checkbox" value="Sms" id="notif-sms" name="check"/>
+                  <label for="notif-sms"></label> Text notification
+                </div>
+              </div>
+              <div class="edit-number">
+                <div>Phone Number</div>
+                <div><input id="phone_number" type="form" class ="placeholder" placeholder="06..." /></div>
+                <button type="button" class="btn btn-secondary">Submit</button>
+              </div>
             </div>
-              <li><a href="#">Edit :</a>
-                <li>Phone Number <input type="form" id="phone_number" placeholder="06..." />
-                <button type="button" id="submit_settings" class="btn btn-secondary">Submit</button>
-                </form>
-
-          </ul>
+          </form>
+        </ul>
       </nav>
     </div>
-        <div id="logged">
-            <input class="form" type="text" id="txt_name" placeholder="Action ?" style="background-color: #2F2F2F" />
-            <div class="btn_done" id="done">Walt has done his job !</div>
-            <table>
-                <tr>
-                    <td class="btn_remind" id='output'>
-                    </td>
-                    <td class="btn_content" id='content_output'>
-                    </td>
-                    <td class="btn_date" id='date_output'>
-                    </td>
-                </tr>
-            </table>
 
-            <div id="list">
+    <input class="form" type="text" id="txt_name" placeholder="Action ?">
+    <div class="btn_done" id="done">Sir yes sir!</div>
 
-            </div>
-        </div>
+    <table>
+      <tr>
+        <td class="btn_remind" id='output'>
+        </td>
+        <td class="btn_content" id='content_output'>
+        </td>
+        <td class="btn_date" id='date_output'>
+        </td>
+      </tr>
+    </table>
 
-        <div id="unlogged">
-            <div class="login">
-                <form id="new_session" class="form-horizontal">
-                    <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
-                        </div>
-                        <div id="action" class="form-group">
-                            <div class="form-inline" id="formSign">
-                                <button type="submit" class="button input-group mb-12"> Login</button>
-                                <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div id="list">
+
     </div>
-
+  </div>
+  <div id="unlogged">
+    <div class="login">
+      <form id="new_session" class="form-horizontal">
+        <p id="form_error_new_user" class="alert alert-danger" style="display: none"></p>
+        <div class="row">
+          <div class="form-group col-md-4">
+            <input class="loginput" type="text" placeholder="*Email" id="user_email" required="required">
+          </div>
+          <div class="form-group col-md-4">
+            <input class="loginput" type="password" placeholder="*Password" id="user_password" required="required">
+          </div>
+          <div id="action" class="form-group">
+            <div class="form-inline" id="formSign">
+              <button type="submit" class="button input-group mb-12"> Login</button>
+              <a id="go-signup" class="button input-group mb-12" href="sign_up.html">Signup</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>

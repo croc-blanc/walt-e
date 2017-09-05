@@ -4,6 +4,7 @@ $(document).ready(function() {
         "accept": "application/json",
     };
 
+
     // var apiBaseUrl = "http://127.0.0.1:3000";
     var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
@@ -34,7 +35,6 @@ $(document).ready(function() {
             data: data,
             dataType: "json",
             success: function(data) {
-                // en cas de success
                 console.log(data);
                 var user = {
                     email: data.email,
@@ -44,9 +44,13 @@ $(document).ready(function() {
                 };
                 // on sauvegarde en local l'email et le token d'authentification
                 localStorage.setItem("user", JSON.stringify(user));
+                // on retourne sur l'index
+                window.location.href = "index.html";
+                // on affiche et on cache ce qu'il faut
                 $("#logged").show();
                 $("#unlogged").hide();
-                location.reload();
+                // on rafraichit l'extention
+                chrome.runtime.reload()
             },
 
             error: function(jqXHR, status, text) {

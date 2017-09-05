@@ -44,8 +44,11 @@ $(document).ready(function() {
                 };
                 // on sauvegarde en local l'email et le token d'authentification
                 localStorage.setItem("user", JSON.stringify(user));
-                $("#logged").show();
-                $("#unlogged").hide();
+
+                // on rafraichit l'app
+                chrome.runtime.reload()
+                // on retourne sur la page principale de walt
+                window.location.href = "index.html";
 
             },
 
