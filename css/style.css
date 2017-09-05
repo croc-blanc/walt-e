@@ -72,12 +72,12 @@ opacity:1;
 
 .btn_list {
 border: 1px solid #FEADA6;
-border-radius: 89px;
+border-radius: 40px;
 font-family: Avenir-LightOblique;
 font-size: 16px;
 border-color: #FEADA6;
 color:#FEADA6;
-width: 250px;
+width: 400px;
 text-align:center;
 opacity:1;
 float: none;
@@ -122,86 +122,6 @@ table {
 html {
   height: 78px;
 }
-
-
-
-
-/*settings*/
-/*
-label.btn span {
-  font-size: 1.5em ;
-}
-
-label input[type="radio"] ~ i.fa.fa-circle-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="radio"] ~ i.fa.fa-dot-circle-o{
-    display: none;
-}
-label input[type="radio"]:checked ~ i.fa.fa-circle-o{
-    display: none;
-}
-label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
-    color: #7AA3CC;    display: inline;
-}
-label:hover input[type="radio"] ~ i.fa {
-color: #7AA3CC;
-}
-
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #7AA3CC;    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-color: #7AA3CC;
-}*/
-/*
-div[data-toggle="buttons"] label.active{
-    color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label {
-display: inline-block;
-padding: 6px 12px;
-margin-bottom: 0;
-font-size: 14px;
-font-weight: normal;
-line-height: 2em;
-text-align: left;
-white-space: nowrap;
-vertical-align: top;
-cursor: pointer;
-background-color: none;
-border: 0px solid
-#c8c8c8;
-border-radius: 3px;
-color: #c8c8c8;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
-}*/
-
-/*div[data-toggle="buttons"] label:hover {
-color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
--webkit-box-shadow: none;
-box-shadow: none;
-}
-*/
-
-
 
 @import "compass/css3";
 
@@ -266,8 +186,11 @@ ul.dropdown {
   position: absolute;
   margin-top: 5px;
   width: 153px;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f601297e88f52831cd655df32e21c61f7d76c059
 }
 
 em { text-decoration:underline; }
@@ -278,10 +201,13 @@ em { text-decoration:underline; }
 */
 .setting-display {
   display: flex;
+  justify-content: space-around;
+
 }
 
 .notification {
   display: block;
+
   position: absolute;
   margin-top: 17px;
   left: 61px;
@@ -297,5 +223,4 @@ em { text-decoration:underline; }
   position: absolute;
   right: 90px;
   margin-top:10px;
-
 }
