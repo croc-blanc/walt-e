@@ -23,22 +23,24 @@
       <nav>
           <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
           <ul class="dropdown">
+          <form class="form_settings">
             <li><a href="#">Notifications :</a></li>
             <div class="squaredFour">
-              <input type="checkbox" value="Pop-up" id="squaredFour" name="check" checked />
+              <input type="checkbox" value="Pop-up" id="web_notification" name="check" checked />
               <label for="squaredFour"></label> by Pop-Ups
-               <input type="checkbox" value="Sms" id="squaredFour" name="check" checked />
+               <input type="checkbox" value="Sms" id="phone_notification" name="check" checked />
               <label for="squaredFour"></label> by Text Message
             </div>
               <li><a href="#">Edit :</a>
-                <li>Phone Number <input type="form" placeholder="06..." />
-                <button type="button" class="btn btn-secondary">Submit</button>
+                <li>Phone Number <input type="form" id="phone_number" placeholder="06..." />
+                <button type="button" id="submit_settings" class="btn btn-secondary">Submit</button>
+                </form>
 
           </ul>
       </nav>
     </div>
         <div id="logged">
-            <input class="form" type="text" id="txt_name" placeholder="  Action       ?" style="background-color: #2F2F2F">
+            <input class="form" type="text" id="txt_name" placeholder="Action ?" style="background-color: #2F2F2F" />
             <div class="btn_done" id="done">Walt has done his job !</div>
             <table>
                 <tr>

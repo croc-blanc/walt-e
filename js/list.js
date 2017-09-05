@@ -1,4 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  setTimeout(function() {
+    $("#txt_name").focus();
+  }, 400 );
+
+
 
   console.log("document ready on list.js");
   var remindersValues = [];
@@ -6,7 +11,9 @@ $(document).ready(function(){
     console.log("list keyup");
     if(e.which == 13) {
       if(input.val() == 'list') {
+        $('#list').empty();
         getStoredReminders();
+        input.val('');
 
       }
     }
@@ -37,7 +44,7 @@ $(document).ready(function(){
     console.log("showRemindersValue " + reminders);
     var i = 100;
     reminders.forEach(function(reminder) {
-      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.date).hide();
+      var r = $('<br>' + '<div class="btn_list" />' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
       setTimeout(function() {
         r.fadeIn(500)
       }, i += 300);
