@@ -26,8 +26,8 @@ $(document).ready(function() {
     reminder: action
   };
 
-  var apiBaseUrl = "http://127.0.0.1:3000";
-  // var apiBaseUrl = "https://walt-ia.herokuapp.com";
+  //var apiBaseUrl = "http://127.0.0.1:3000";
+  var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
 
   input.on('keyup', function(event) {
@@ -173,8 +173,8 @@ $(document).ready(function() {
   });
 
   $('#submit_settings').click(function() {
-    $('#phone_number').val("");
     newSettings["phone_number"] = $('#phone_number').val();
+    $('#phone_number').val("");
     console.log('yo');
 
 

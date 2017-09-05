@@ -55,8 +55,8 @@ $(document).ready(function() {
 
   function removable(reminder) {
 
-      var apiBaseUrl = "http://127.0.0.1:3000";
-      // var apiBaseUrl = "https://walt-ia.herokuapp.com";
+      //var apiBaseUrl = "http://127.0.0.1:3000";
+      var apiBaseUrl = "https://walt-ia.herokuapp.com";
       var ajaxHeaders = {
       "X-User-Email": JSON.parse(localStorage.getItem("user")).email,
       "X-User-Token": JSON.parse(localStorage.getItem("user")).token

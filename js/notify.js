@@ -15,8 +15,8 @@ $(document).ready(function() {
     };
 
 
-    var apiBaseUrl = "http://127.0.0.1:3000";
-    // var apiBaseUrl = "https://walt-ia.herokuapp.com";
+    //var apiBaseUrl = "http://127.0.0.1:3000";
+     var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
     // check si les notifs sont disponible sur le navigateur
     if (!Notification) {
