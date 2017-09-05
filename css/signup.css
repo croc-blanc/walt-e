@@ -12,8 +12,8 @@ body {
   flex-direction: row
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 300px;
-  height: 200px;
+/*  width: 300px;
+  height: 200px;*/
   font-family: 'Open Sans', sans-serif;
   background: #2F2F2F;
 }
@@ -23,7 +23,7 @@ body {
   left: 50%;
   margin-top: 10px;
   width:300px;
-  height:200px;
+/*  height:200px;*/
 }
 
 input {

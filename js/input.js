@@ -102,7 +102,7 @@ $(document).ready(function() {
   function extractActionType() {
     // check if the input is correct and assign that value to action.type (to save it in rails)
     var value = input.val();
-    var validActions = ["reminder", "remind", "rappelle"];
+    var validActions = ["reminder", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi"];
 
     if (validActions.indexOf(value) >= 0) {
       action.type = value;
@@ -175,7 +175,7 @@ $(document).ready(function() {
 
 
     step = 1;
-    input.attr("placeholder", "Action       ?");
+    input.attr("placeholder", "Action?");
 
   };
 
