@@ -17,17 +17,14 @@
 </head>
 
 <body>
-  <div class="ffn_layout" style="display: block;">
-    <div id="logged">
-      <div class="setting-container">
-        <nav>
-          <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
-          <ul class="dropdown">
-            <form class="form_settings">
-              <div class="setting-display">
-               <div class="notification" style="display: block;">
-                <p><em>Notifications :</em></p>
-                <div class="web-notif">
+    <div class="ffn_layout" style="display: block;">
+      <div id="logged">
+        <div class="setting-container">
+          <nav>
+            <a class="dropdown-toggle" href="#" title="Menu"><img src="img/gear.png"></a>
+            <ul class="dropdown">
+            <div class="setting-display">
+              <div class="notification" style="display: block;">
                   <input type="checkbox" value="Pop-up" id="web_notification" name="check" checked />
                   <label for="web_notification"></label> Web notification
                 </div>
@@ -36,12 +33,11 @@
                   <label for="phone_notification"></label> Text notification
                 </div>
               </div>
-              <div class="edit-number">
-                <div>Phone Number</div>
-                <div><input id="phone_number" type="form" class ="placeholder" placeholder="06..." /></div>
-                <button id="submit_settings" type="button" class="btn btn-secondary">Submit</button>
+               <div class="edit-number">
+<!--                 <li><em>Edit :</em> -->
+                <div><input type="form" class ="placeholder" placeholder="Phone number" /></div>
+                <button type="submit_settings" type="button" class="btn btn-primary">Submit</button>
               </div>
-            </div>
           </form>
         </ul>
       </nav>
@@ -62,9 +58,10 @@
     </table>
 
     <div id="list">
-
     </div>
   </div>
+
+
   <div id="unlogged">
     <div class="login">
       <form id="new_session" class="form-horizontal">
