@@ -53,7 +53,7 @@ $(document).ready(function() {
         var newReminders = [];
         // ajoute les reminders seulement si il ne sont pas encore passé
         reminders.forEach(function(reminder) {
-            if (Date.parse(reminder.time) > Date.now()) {
+            if (Date.parse(reminder.time) > Date.now() && reminder.web_notification == true) {
                 newReminders.push(reminder)
             }
         });

@@ -72,7 +72,7 @@ $(document).ready(function() {
         // also i attribute the value to the variable action to send it in ajax
         // also change placeholder
 
-        if (actionType == "reminder", "remind", "remindme", "Reminder", "REMINDER", "rappelle moi", "rappel moi", "memo") {
+        if (actionType == "reminder", "reminder ", "remind ", "remind", "remindme", "Reminder", "REMINDER", "rappelle moi", "rappel moi", "memo") {
             var remind = $('#output').html(input.val());
             $('#list').empty();
             remind.hide();
@@ -108,7 +108,7 @@ $(document).ready(function() {
     function extractActionType() {
         // check if the input is correct and assign that value to action.type (to save it in rails)
         var value = input.val();
-        var validActions = ["reminder", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi", "memo"];
+        var validActions = ["reminder", "reminder ", "remind ", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi", "memo"];
 
         if (validActions.indexOf(value) >= 0) {
             action.type = value;
