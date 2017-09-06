@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
     //var apiBaseUrl = "http://127.0.0.1:3000";
-     var apiBaseUrl = "https://walt-ia.herokuapp.com";
+    var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
     // check si les notifs sont disponible sur le navigateur
     if (!Notification) {
@@ -50,10 +50,10 @@ $(document).ready(function() {
 
 
     function handleReminders(reminders) {
-      var newReminders = [];
-            // ajoute les reminders seulement si il ne sont pas encore passé
+        var newReminders = [];
+        // ajoute les reminders seulement si il ne sont pas encore passé
         reminders.forEach(function(reminder) {
-            if (Date.parse(reminder.time) > Date.now()) {
+            if (Date.parse(reminder.time) > Date.now() && reminder.web_notification == true) {
                 newReminders.push(reminder)
             }
         });
@@ -89,11 +89,11 @@ $(document).ready(function() {
 
 
     function runRemindersTime(reminders) {
-      if (remindersIntervalId) {
-        clearTimeout(remindersIntervalId);
-      };
+        if (remindersIntervalId) {
+            clearTimeout(remindersIntervalId);
+        };
 
-      remindersIntervalId = setInterval(function() {
+        remindersIntervalId = setInterval(function() {
             console.log(reminders);
             reminders.forEach(function(reminder, index) {
                 // comparaison entre l'heure du reminder et l'heure actuelle si le reminder est dans le futur il est ajouter en local
