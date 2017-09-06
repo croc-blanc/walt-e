@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // quand click sur boutton submit, click sur le dropdown toggle
     $('#submit_settings').on("click", function() {
         $('.dropdown-toggle').next('.dropdown').toggle();
     });
@@ -151,6 +152,7 @@ $(document).ready(function() {
     };
 
     function hideButtons() {
+        // cache les champs output puis affiche un bouton done et le fait disparaitre
         setTimeout(function() {
             $('#output').fadeOut(300) + $('#content_output').fadeOut(300) + $('#date_output').fadeOut(300)
         }, 700);
@@ -169,6 +171,7 @@ $(document).ready(function() {
     };
 
     $('#submit_settings').click(function() {
+        // attribut values au keys de chaque reminders
         newSettings["phone_number"] = $('#phone_number').val();
         newSettings["phone_notification"] = $('#phone_notification').prop('checked');
         newSettings["web_notification"] = $('#web_notification').prop('checked');
@@ -184,6 +187,7 @@ $(document).ready(function() {
     };
 
     function getSettings() {
+        // reccupere les settings storé 
         var str = localStorage.getItem("settingsPlusId");
         if (str) {
             return JSON.parse(str);
