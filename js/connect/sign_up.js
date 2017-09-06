@@ -5,7 +5,7 @@ $(document).ready(function() {
     };
 
 
-    // var apiBaseUrl = "http://127.0.0.1:3000";
+    //var apiBaseUrl = "http://127.0.0.1:3000";
     var apiBaseUrl = "https://walt-ia.herokuapp.com";
 
     // on pose un micro sur le formulaire qui ecoute lorsque l'on clique sur submit
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
                 // on rafraichit l'app
                 chrome.runtime.reload()
-                // on retourne sur la page principale de walt
+                    // on retourne sur la page principale de walt
                 window.location.href = "index.html";
 
             },
@@ -59,11 +59,10 @@ $(document).ready(function() {
                     $("#form_error_new_user")
                         .show()
                         .html(jqXHR.responseJSON.error);
-                }
-                else {
+                } else {
                     $("#form_error_new_user")
-                      .show()
-                      .html("Une erreur est survenue, vérifiez votre connexion Internet !");
+                        .show()
+                        .html("Une erreur est survenue, vérifiez votre connexion Internet !");
                 }
             }
         });

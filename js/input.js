@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $('#submit_settings').on("click", function() {
+        $('.dropdown-toggle').next('.dropdown').toggle();
+    });
 
     // si l'user est logger, on recupère le contenu du localstorage 'user' et recrer un objet
     if (localStorage.getItem("user") != null) {
@@ -8,15 +11,17 @@ $(document).ready(function() {
         };
     };
 
+
+    var localsettings = getSettings();
     var newSettings = {};
     var input = $("#txt_name");
     var step = 1;
     var actionType;
     var validated = $('#done').hide();
     var action = {
-        phone_number: undefined,
-        web_notification: undefined,
-        phone_notification: undefined,
+        phone_number: localsettings.phone_number,
+        web_notification: localsettings.web_notification,
+        phone_notification: localsettings.phone_notification,
         type: undefined,
         when: undefined,
         content: undefined
@@ -67,7 +72,7 @@ $(document).ready(function() {
         // also i attribute the value to the variable action to send it in ajax
         // also change placeholder
 
-        if (actionType == "reminder", "remind", "remindme", "Reminder", "REMINDER", "rappelle moi", "rappel moi") {
+        if (actionType == "reminder", "remind", "remindme", "Reminder", "REMINDER", "rappelle moi", "rappel moi", "memo") {
             var remind = $('#output').html(input.val());
             $('#list').empty();
             remind.hide();
@@ -103,7 +108,7 @@ $(document).ready(function() {
     function extractActionType() {
         // check if the input is correct and assign that value to action.type (to save it in rails)
         var value = input.val();
-        var validActions = ["reminder", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi"];
+        var validActions = ["reminder", "remind", "rappelle moi", "rappel moi", "REMIND", "REMINDER", "Remind", "rappel-moi", "memo"];
 
         if (validActions.indexOf(value) >= 0) {
             action.type = value;
@@ -127,8 +132,7 @@ $(document).ready(function() {
 
     function sendAction() {
         // send to rails informations about one reminder to save it and get feedback about the when action
-        var data = $.extend({}, hash, getSettings());
-
+        var data = hash;
         $.ajax({
             type: "POST",
             url: apiBaseUrl + "/api/v1/reminders",
@@ -164,18 +168,12 @@ $(document).ready(function() {
         input.attr("placeholder", "Action ?");
     };
 
-    $(".form_settings input[type=checkbox]").on("click", function(event) {
-        var input = $(this);
-
-        newSettings[input.attr("id")] = input.prop('checked');
-        console.log('yoyo', input.attr("id"))
-    });
-
     $('#submit_settings').click(function() {
         newSettings["phone_number"] = $('#phone_number').val();
-        $('#phone_number').val("");
-        console.log('yo');
-
+        newSettings["phone_notification"] = $('#phone_notification').prop('checked');
+        newSettings["web_notification"] = $('#web_notification').prop('checked');
+        window.location.reload();
+        console.log(newSettings);
 
         storeSettings();
     });
@@ -190,7 +188,11 @@ $(document).ready(function() {
         if (str) {
             return JSON.parse(str);
         } else {
-            return {};
+            return {
+                "phone_number": "",
+                "web_notification": true,
+                "phone_notification": false,
+            };
         }
     }
 });
