@@ -43,7 +43,7 @@ $(document).ready(function() {
         del.attr("src", "/img/delete.png");
         var i = 100;
         reminders.forEach(function(reminder, index) {
-            var r = $('<br>' + "<div class='btn_list' />' + '<img id='" + index + "' src='/img/delete.png'/>'<br>").appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
+            var r = $('<br>' + '<div class="btn_list" />' + '<img class="delete-cross" id="' + index + '" src="/img/delete.png"/>' + '</div>' + '<br>').appendTo('#list').text('reminder' + ' ' + reminder.content.slice(0, 10) + ' ' + reminder.time).hide();
             setTimeout(function() {
                 r.fadeIn(500)
             }, i += 300);
