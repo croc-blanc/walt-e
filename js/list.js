@@ -39,17 +39,19 @@ $(document).ready(function() {
     function showRemindersValue(reminders) {
         console.log("showRemindersValue " + reminders);
         // comment ajouter l'image dans la div des reminders ?
-        var del = $('<img />')
-        del.attr("src", "/img/delete.png");
         var i = 100;
         reminders.forEach(function(reminder, index) {
             var jsTime = new Date(reminder.time);
+            var displayText = reminder.content.slice(0, 20) + ' | ' + jsTime.getDate() + "/" + jsTime.getMonth() + "/" + jsTime.getFullYear() + " | " + jsTime.getHours() + "h" + jsTime.getMinutes();
             console.log(jsTime);
-            var r = $('<br>' + '<div class="btn_list" />' + '<img class="delete-cross" id="' + index + '" src="/img/delete.png"/>' + '</div>' + '<br>').appendTo('#list').text(reminder.content.slice(0, 20) + ' | ' + jsTime.getDate() + "/" + jsTime.getMonth() + "/" + jsTime.getFullYear() + " | " + jsTime.getHours() + "h" + jsTime.getMinutes()).hide();
+            var r = $('<div id="container-' + reminder.id + '"><br>' + '<div class="btn_list">' + '<div>' + displayText + '</div>' + '<img class="delete-cross" id="delete-' + reminder.id + '" src="/img/delete.png"/>' + '</div>' + '<br> </div>').appendTo('#list').hide();
             setTimeout(function() {
                 r.fadeIn(500)
             }, i += 300);
-            $('#' + index).click(function() {
+            $('#delete-' + reminder.id).click(function() {
+                $("#container-" + reminder.id).slideUp("slow", function() {
+                    // Animation complete.
+                });
                 removable(reminder);
             });
         });
@@ -69,7 +71,7 @@ $(document).ready(function() {
             url: apiBaseUrl + "/api/v1/reminders/" + reminder.id,
             headers: ajaxHeaders,
             success: function(data) {
-                alert(reminder.content + " Has been removed : ");
+                // alert(reminder.content + " Has been removed : ");
             },
             error: function(jqXHR) {
                 console.error(jqXHR.responseText);

@@ -94,7 +94,7 @@ $(document).ready(function() {
         // debugger;
         if (input.val().length > 25) { 
             var messageTextSliced = input.val().slice(0, 20);
-            var message = $('#content_output').html(messageTextSliced);
+            var message = $('#content_output').html(messageTextSliced + "...");
         } else {
             var messageText = input.val();
             var message = $('#content_output').html(messageText);
